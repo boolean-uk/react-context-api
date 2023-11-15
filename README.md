@@ -21,8 +21,8 @@ function. You wil be replacing them with "application-level state" by using **Co
 1. In the **App** component, import `createContext` and use it to create a new Context Component.
    1. This Context Component must be defined OUTSIDE of the App function.
    2. You can give this Context Component any name - make it descriptive/meaningful.
-2. Wrap this Context Component around the child components of the App component. Update it to use the `<Context.
-   Provider>` Component and pass the relevant data into the `value` attribute.
+2. Wrap this Context Component around the child components of the App component. Update it to use the
+   `<Context.Provider>` Component and pass the relevant data into the `value` attribute.
 3. Remove the props from the child components (both where they are used in App, and in their respective component
    files).
 4. In the child components, import the `useContext` hook and use this to get the state values/functions that were
