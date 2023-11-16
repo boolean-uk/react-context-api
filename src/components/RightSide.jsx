@@ -1,15 +1,27 @@
-import imgElon from '../assets/images/elon.jpg'
-import imgZuck from '../assets/images/zuck.jpg'
+import { useContext } from "react";
+import imgElon from "../assets/images/elon.jpg";
+import imgZuck from "../assets/images/zuck.jpg";
+import { MainContext } from "../App";
 
-export default function RightSide({ theme }) {
+export default function RightSide() {
+    const { theme } = useContext(MainContext);
+
     return (
         <aside>
-            <div className={theme === 'dark' ? 'search-section dark' : 'search-section'}>
+            <div
+                className={
+                    theme === "dark" ? "search-section dark" : "search-section"
+                }
+            >
                 <i className="fa-solid fa-magnifying-glass search-icon"></i>
-                <input className="search" type="text" placeholder="Search Twitter" />
+                <input
+                    className="search"
+                    type="text"
+                    placeholder="Search Twitter"
+                />
             </div>
 
-            <div className={theme === 'dark' ? 'widget dark' : 'widget'}>
+            <div className={theme === "dark" ? "widget dark" : "widget"}>
                 <div className="widget-grid">
                     <h1>Get Verified</h1>
                     <h3>Subscribe to unlock nothing.</h3>
@@ -18,7 +30,7 @@ export default function RightSide({ theme }) {
                 </div>
             </div>
 
-            <div className={theme === 'dark' ? 'widget dark' : 'widget'}>
+            <div className={theme === "dark" ? "widget dark" : "widget"}>
                 <h1>What's happening</h1>
 
                 <div className="news-block">
@@ -45,11 +57,13 @@ export default function RightSide({ theme }) {
                     </div>
                 </div>
             </div>
-            <div className={theme === 'dark' ? 'widget dark' : 'widget'}>
+            <div className={theme === "dark" ? "widget dark" : "widget"}>
                 <h1>Who to follow</h1>
 
                 <div className="follow-block">
-                    <div className="icon"><img src={imgElon}/></div>
+                    <div className="icon">
+                        <img src={imgElon} />
+                    </div>
 
                     <div className="content">
                         <h4>Elon Musk</h4>
@@ -62,7 +76,9 @@ export default function RightSide({ theme }) {
                 </div>
 
                 <div className="follow-block">
-                    <div className="icon"><img src={imgZuck}/></div>
+                    <div className="icon">
+                        <img src={imgZuck} />
+                    </div>
 
                     <div className="content">
                         <h4>Mark Zuckerberg</h4>
@@ -75,5 +91,5 @@ export default function RightSide({ theme }) {
                 </div>
             </div>
         </aside>
-    )
+    );
 }
