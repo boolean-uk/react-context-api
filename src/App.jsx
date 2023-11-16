@@ -24,8 +24,6 @@ function App() {
       <div className="container">
         <Header theme={theme} setTheme={setTheme} />
         <Tweets
-          tweets={tweets}
-          setTweets={setTweets}
           theme={theme}
         />
         <RightSide theme={theme} />
