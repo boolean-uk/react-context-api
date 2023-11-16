@@ -1,14 +1,18 @@
 import CreateTweet from './CreateTweet'
 import Tweet from './Tweet'
+import { App, AppContext } from '../App'
+import { useContext } from 'react'
 
-export default function Tweets({ tweets, setTweets, user, theme }) {
+export default function Tweets({ theme }) {
+
+    const {tweets, user} = useContext(AppContext)
   return (
         <main>
             <div className={theme === 'dark' ? 'top-bar dark' : 'top-bar'}>
                 <h2 className="title">Home</h2>
             </div>
 
-            <CreateTweet tweets={tweets} setTweets={setTweets} user={user} theme={theme} />
+            <CreateTweet user={user} theme={theme} />
 
             <div className="show-more-tweets">
                 <p>Show 35 Tweets</p>
