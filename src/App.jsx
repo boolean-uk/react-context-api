@@ -4,6 +4,7 @@ import Tweets from './components/Tweets'
 import RightSide from './components/RightSide'
 import defaultTweets from './assets/data/tweets.js'
 import user from './assets/data/user.js'
+import { createContext } from 'react'
 
 function App() {
     const [tweets, setTweets] = useState(defaultTweets)
