@@ -22,11 +22,10 @@ function App() {
       value={{ user: user, tweets: tweets, setTweets: setTweets }}
     >
       <div className="container">
-        <Header user={user} theme={theme} setTheme={setTheme} />
+        <Header theme={theme} setTheme={setTheme} />
         <Tweets
           tweets={tweets}
           setTweets={setTweets}
-          user={user}
           theme={theme}
         />
         <RightSide theme={theme} />
