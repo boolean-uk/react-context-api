@@ -1,4 +1,6 @@
+
 import imgDoge from '../images/doge.jpg'
+
 
 export default {
     profileImage: imgDoge,
