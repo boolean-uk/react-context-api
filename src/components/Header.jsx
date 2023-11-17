@@ -3,10 +3,11 @@ import React, { useContext } from "react";
 import { AppContext } from "../App";
 
 // 4. Remove props
-export default function Header({ theme, setTheme }) {
+export default function Header({ props }) {
   // 5. Add useContext here
 
   const { user } = useContext(AppContext);
+  const { theme, setTheme } = useContext(AppContext);
 
   const handleCheckChange = () => {
     if (theme === "dark") {

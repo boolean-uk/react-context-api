@@ -3,8 +3,8 @@ import CreateTweet from "./CreateTweet";
 import Tweet from "./Tweet";
 import { AppContext } from "../App";
 
-export default function Tweets({ theme }) {
-  const { tweets } = useContext(AppContext);
+export default function Tweets({}) {
+  const { tweets, theme } = useContext(AppContext);
   return (
     <main>
       <div className={theme === "dark" ? "top-bar dark" : "top-bar"}>
