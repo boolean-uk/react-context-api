@@ -10,7 +10,7 @@ const ThemeContext = createContext()
 
 function App() {
 
-    const currentTheme = localStorage.getItem('theme')
+    const currentTheme = localStorage.getItem('theme') || 'light'
 
     const [tweets, setTweets] = useState(defaultTweets)
     const [theme, setTheme] = useState(currentTheme);
