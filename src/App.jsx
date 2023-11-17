@@ -7,10 +7,11 @@ import user from './assets/data/user.js'
 
 const UserContext = createContext()
 const PostsContext = createContext()
+const loadedTheme = localStorage.getItem('theme');
 
 function App() {
     const [tweets, setTweets] = useState(defaultTweets)
-    const [theme, setTheme] = useState('light');
+    const [theme, setTheme] = useState( loadedTheme ? JSON.parse(loadedTheme).theme : 'light');
 
     useEffect(() => {
         theme === 'light'
@@ -33,4 +34,4 @@ function App() {
 
 // NOTE! Instead of `export default App` we use `export { App }` here because we have
 // more than one thing to export from this file.
-export { App, PostsContext };
+export { App, PostsContext, UserContext };

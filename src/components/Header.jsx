@@ -13,10 +13,13 @@ export default function Header() {
       } else {
         setTheme('dark');
       }
+      localStorage.setItem('theme', JSON.stringify({ theme: theme === 'dark' ? 'light' : 'dark' }));
     }
 
     const handleButtonClick = () => {
-      console.log("CLICK!");
+        console.log("CLICK!");
+        localStorage.clear();
+        setTheme('light');
     }
 
     return (
