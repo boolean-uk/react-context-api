@@ -18,6 +18,7 @@ export default function Header() {
 
     const handleButtonClick = () => {
         localStorage.removeItem('theme')
+        handleCheckChange()
     }
 
     return (
