@@ -1,8 +1,32 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import imgDoge from '../assets/images/doge.jpg'
+import { AppContext, ThemeContext } from '../App'
 
-export default function CreateTweet({ tweets, setTweets, user, theme }) {
-    const [content, setContent] = useState('')
+const Initial_Post = () => {
+    const content = localStorage.getItem('content')
+
+    return {
+        content: content || ''
+    }
+}
+
+export default function CreateTweet() {
+    const [content, setContent] = useState(Initial_Post())
+
+    const {tweets, setTweets, user} = useContext(AppContext)
+    const {theme} = useContext(ThemeContext)
+
+    const handleChnage = (e) => {
+        const {name, value} = e.target
+
+        setContent({   
+            [name]: value
+        })
+
+        localStorage.setItem(name, value)
+    }
+
+    console.log(content)
 
     const addTweet = (e) => {
         e.preventDefault()
@@ -10,14 +34,16 @@ export default function CreateTweet({ tweets, setTweets, user, theme }) {
             {
                 ...user,
                 date: '1m',
-                content,
                 commentCount: 0,
                 retweetCount: 0,
                 heartCount: 0,
                 analyticsCount: 0
             },
-            ...tweets
+            content,
+            ...tweets,
         ])
+        localStorage.clear()
+        setContent(Initial_Post)
     }
 
     return (
@@ -32,8 +58,9 @@ export default function CreateTweet({ tweets, setTweets, user, theme }) {
                     className="content"
                     type="text"
                     placeholder="What is happening?!"
-                    value={content}
-                    onChange={(e) => setContent(e.target.value)}
+                    name='content'
+                    value={content.content}
+                    onChange={handleChnage}
                     ></textarea>
                 </div>
 

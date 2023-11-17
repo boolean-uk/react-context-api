@@ -1,21 +1,43 @@
-export default function Header({ user, theme, setTheme }) {
-    const handleCheckChange = () => {
+import { useContext, useState } from "react";
+import { AppContext, ThemeContext } from "../App";
+
+const Initial_Theme = () => {
+    const initialTheme = localStorage.getItem('theme')
+
+    return {
+        theme: true
+    }
+}
+
+export default function Header() {
+    const {user} = useContext(AppContext)
+    const {theme, setTheme} = useContext(ThemeContext)
+
+    const [checkedTheme, setCheckedTheme] = useState(Boolean)
+
+    const handleCheckChange = (e) => {
+      const {type, checked} = e.target
+
+      setTheme({[type]: checked})
       if(theme === 'dark') {
         setTheme('light');
       } else {
         setTheme('dark');
       }
+
+      localStorage.setItem(type, checked)
     }
 
-    const handleButtonClick = () => {
-      console.log("CLICK!");
+    const handleButtonClick = (e) => {
+       localStorage.clear()
+       setTheme('light')
     }
 
     return (
         <header className={theme}>
             <div>
                 <div className="dark-mode-container">
-                    <input id="darkMode" type="checkbox" checked={theme === 'dark'} onChange={handleCheckChange}></input>
+                    <input id="darkMode" type="checkbox" name="theme" checked={theme === 'dark'} onChange={handleCheckChange}></input>
                     <label htmlFor="darkMode">Enable Dark Mode</label>
                 </div>
                 <div>
