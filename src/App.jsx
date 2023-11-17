@@ -8,9 +8,15 @@ import user from './assets/data/user.js'
 const UserContext = createContext()
 const ThemeContext = createContext()
 
+const getTheme = () => {
+        const CurrentTheme = localStorage.getItem('theme')
+        return CurrentTheme || 'light'
+    }
+
 function App() {
+
     const [tweets, setTweets] = useState(defaultTweets)
-    const [theme, setTheme] = useState('light');
+    const [theme, setTheme] = useState(getTheme());
 
     useEffect(() => {
         theme === 'light'
