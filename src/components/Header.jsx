@@ -1,21 +1,42 @@
-export default function Header({ user, theme, setTheme }) {
-    const handleCheckChange = () => {
-      if(theme === 'dark') {
-        setTheme('light');
-      } else {
-        setTheme('dark');
-      }
-    }
+import { useContext, useEffect } from "react";
+import { TweetContext } from "../App";
+import { ThemeContext } from "../App";
 
-    const handleButtonClick = () => {
-      console.log("CLICK!");
+export default function Header() {
+  const { user } = useContext(TweetContext);
+  const { theme, setTheme } = useContext(ThemeContext);
+
+ 
+  useEffect(() => {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      setTheme(savedTheme);
     }
+  }, [setTheme]);
+
+  const handleCheckChange = () => {
+    let newTheme;
+    if (theme === 'dark') {
+      newTheme = 'light';
+    } else {
+      newTheme = 'dark';
+    }
+    setTheme(newTheme);
+    localStorage.setItem('theme', newTheme);
+  };
+
+  const handleButtonClick = () => {
+    localStorage.removeItem('theme'); 
+    setTheme('light'); 
+  };
 
     return (
         <header className={theme}>
             <div>
                 <div className="dark-mode-container">
-                    <input id="darkMode" type="checkbox" checked={theme === 'dark'} onChange={handleCheckChange}></input>
+                    <input id="darkMode"
+                     type="checkbox" checked={theme === 'dark'}
+                     onChange={handleCheckChange}></input>
                     <label htmlFor="darkMode">Enable Dark Mode</label>
                 </div>
                 <div>
