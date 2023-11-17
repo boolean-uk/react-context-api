@@ -1,9 +1,9 @@
 import { useContext } from 'react'
-import { PostsContext } from '../App'
+import { UserContext } from '../App'
 
 export default function Tweet({ tweet }) {
 
-    const { theme } = useContext(PostsContext)
+    const { theme } = useContext(UserContext)
 
     return (
         <article className={theme === 'dark' ? 'tweet dark' : 'tweet'}>

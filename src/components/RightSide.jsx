@@ -1,11 +1,11 @@
 import imgElon from '../assets/images/elon.jpg'
 import imgZuck from '../assets/images/zuck.jpg'
 import { useContext } from 'react'
-import { PostsContext } from '../App'
+import { UserContext } from '../App'
 
 export default function RightSide() {
 
-    const { theme } = useContext(PostsContext)
+    const { theme } = useContext(UserContext)
     
     return (
         <aside>
