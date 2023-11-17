@@ -1,3 +1,4 @@
+import { createContext } from 'react'
 import imgDoge from '../images/doge.jpg'
 
 export default {
