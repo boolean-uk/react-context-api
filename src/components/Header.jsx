@@ -7,6 +7,7 @@ const {user} = useContext(UserContext)
 const {theme, setTheme} = useContext(ThemeContext)
 
     const handleCheckChange = () => {
+    localStorage.setItem('theme', 'dark')
       if(theme === 'dark') {
         setTheme('light');
       } else {
@@ -15,7 +16,7 @@ const {theme, setTheme} = useContext(ThemeContext)
     }
 
     const handleButtonClick = () => {
-      console.log("CLICK!");
+      localStorage.removeItem('theme')
     }
 
     return (

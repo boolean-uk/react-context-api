@@ -20,7 +20,7 @@ export default function Tweets() {
                 <p>Show 35 Tweets</p>
             </div>
 
-            {tweets.map((tweet, index) => <Tweet tweet={tweet} theme={theme} key={index} />)}
+            {tweets.map((tweet, index) => <Tweet tweet={tweet} key={index} />)}
         </main>
     )
 }
