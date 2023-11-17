@@ -54,3 +54,4 @@ export default function CreateTweet({ tweets, setTweets, user, theme }) {
         </div>
     )
 }
+
