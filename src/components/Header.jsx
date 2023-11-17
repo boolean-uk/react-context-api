@@ -20,7 +20,14 @@ export default function Header() {
       setTheme('light');
     }
 
-  
+    useEffect(() => {
+        const storedTheme = localStorage.getItem('theme');
+        if (storedTheme) {
+            setTheme(storedTheme);
+        }
+    }, []);
+
+  console.log(theme)
 
     return (
         <header className={theme}>
