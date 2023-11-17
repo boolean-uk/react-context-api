@@ -5,6 +5,7 @@ import RightSide from './components/RightSide'
 import defaultTweets from './assets/data/tweets.js'
 import user from './assets/data/user.js'
 
+const UserContext = createContext()
 const PostsContext = createContext()
 
 function App() {
@@ -19,11 +20,13 @@ function App() {
 
     return (
         <PostsContext.Provider value={{ user, tweets, setTweets, theme, setTheme }}>
+        <UserContext.Provider value={theme}>
         <div className="container">
             <Header />
             <Tweets />
             <RightSide />
         </div>
+        </UserContext.Provider>
         </PostsContext.Provider>
     )
 }
