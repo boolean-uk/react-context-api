@@ -5,8 +5,7 @@ import RightSide from "./components/RightSide";
 import defaultTweets from "./assets/data/tweets.js";
 import user from "./assets/data/user.js";
 
-const UserContext = createContext();
-
+const Something = createContext();
 function App() {
   const [tweets, setTweets] = useState(defaultTweets);
   const [theme, setTheme] = useState("light");
@@ -18,16 +17,16 @@ function App() {
   }, [theme]);
 
   return (
-    <UserContext.Provider value={{ user, theme, setTheme, tweets, setTweets }}>
+    <Something.Provider value={{ user, theme, setTheme ,tweets,setTweets}}>
       <div className="container">
-        <Header />
-        <Tweets />
-        <RightSide />
+        <Header/>
+        <Tweets/>
+        <RightSide  />
       </div>
-    </UserContext.Provider>
+    </Something.Provider>
   );
 }
 
 // NOTE! Instead of `export default App` we use `export { App }` here because we have
 // more than one thing to export from this file.
-export { App, UserContext };
+export { App , Something};
