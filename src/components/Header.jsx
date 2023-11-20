@@ -8,12 +8,15 @@ export default function Header({theme, setTheme}) {
       } else {
         setTheme('dark');
       }
+      localStorage.setItem('theme', JSON.stringify({ theme: theme === 'dark' ? 'light' : 'dark' }))
     }
 
     const {tweets, setTweets, user} = useContext(TweetsContext)
 
     const handleButtonClick = () => {
       console.log("CLICK!");
+      localStorage.clear();
+      setTheme('light')
     }
 
     return (

@@ -6,11 +6,13 @@ import defaultTweets from './assets/data/tweets.js'
 import user from './assets/data/user.js'
 import { createContext } from 'react'
 
+
 const TweetsContext = createContext()
+const themeSet = localStorage.getItem('theme')
 
 function App() {
     const [tweets, setTweets] = useState(defaultTweets)
-    const [theme, setTheme] = useState('light');
+    const [theme, setTheme] = useState(themeSet ? JSON.parse(themeSet).theme : 'light');
 
     useEffect(() => {
         theme === 'light'
