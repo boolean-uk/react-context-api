@@ -10,7 +10,6 @@ export default function Header() {
       if(event.target.value === "reset") {
         localStorage.removeItem("theme")
         setTheme("light")
-        console.log("local storage theme was deleted", localStorage.getItem("theme"))
         return
       }
       
