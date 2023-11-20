@@ -6,10 +6,11 @@ export default function Header() {
     const {theme, setTheme} = useContext(ThemeContext)
     const {user} = useContext(TweetContext)
 
-    const handleCheckChange = () => {
-      if(!!localStorage.getItem("theme")) {
+    const handleChange = (event) => {
+      if(event.target.value === "reset") {
         localStorage.removeItem("theme")
         setTheme("light")
+        console.log("local storage theme was deleted", localStorage.getItem("theme"))
         return
       }
       
@@ -19,19 +20,18 @@ export default function Header() {
         localStorage.setItem("theme", "dark")
         setTheme("dark")
       }
+      
     }
-
-    const handleButtonClick = () => handleCheckChange()
 
     return (
         <header className={theme}>
             <div>
                 <div className="dark-mode-container">
-                    <input id="darkMode" type="checkbox" checked={theme === 'dark'} onChange={handleCheckChange}></input>
+                    <input id="darkMode" type="checkbox" checked={theme === 'dark'} onChange={(event) => handleChange(event)}></input>
                     <label htmlFor="darkMode">Enable Dark Mode</label>
                 </div>
                 <div>
-                    <button className="clear-settings-btn" onClick={handleButtonClick}>Clear Locally Saved Settings</button>
+                    <button className="clear-settings-btn" value={"reset"} onClick={(event) => handleChange(event)}>Clear Locally Saved Settings</button>
                 </div>
             </div>
             <div className="logo">
