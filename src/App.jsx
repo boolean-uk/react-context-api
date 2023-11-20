@@ -6,7 +6,7 @@ import defaultTweets from './assets/data/tweets.js'
 import user from './assets/data/user.js'
 
 export const TweetContext = createContext()
-
+export const ThemeContext = createContext('light')
 function App() {
     const [tweets, setTweets] = useState(defaultTweets)
     const [theme, setTheme] = useState('light');
@@ -18,13 +18,15 @@ function App() {
     }, [theme])
 
     return (
-        <TweetContext.Provider value={{user, tweets, setTweets}}>
-            <div className="container">
-                <Header theme={theme} setTheme={setTheme} />
-                <Tweets tweets={tweets} setTweets={setTweets} user={user} theme={theme}  />
-                <RightSide theme={theme} />
-            </div>
-        </TweetContext.Provider>
+        <ThemeContext.Provider value={{theme, setTheme}}>
+            <TweetContext.Provider value={{user, tweets, setTweets}}>
+                <div className="container">
+                    <Header theme={theme} setTheme={setTheme} />
+                    <Tweets tweets={tweets} setTweets={setTweets} user={user} theme={theme}  />
+                    <RightSide theme={theme} />
+                </div>
+            </TweetContext.Provider>
+        </ThemeContext.Provider>
     )
 }
 
