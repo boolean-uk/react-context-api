@@ -1,7 +1,7 @@
 import imgElon from '../assets/images/elon.jpg'
 import imgZuck from '../assets/images/zuck.jpg'
 import { useContext } from 'react'
-import { TweetContext, ThemeContext } from '../App'
+import { ThemeContext } from '../App'
 
 export default function RightSide() {
     const {theme} = useContext(ThemeContext,)

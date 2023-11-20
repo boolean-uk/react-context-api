@@ -12,7 +12,7 @@ export default function Tweets() {
                 <h2 className="title">Home</h2>
             </div>
 
-            <CreateTweet theme={theme} />
+            <CreateTweet />
 
             <div className="show-more-tweets">
                 <p>Show 35 Tweets</p>
