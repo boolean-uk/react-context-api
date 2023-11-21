@@ -5,6 +5,8 @@ export default function Header() {
     const { theme, setTheme } = useContext(ThemeContext)
     const { user } = useContext(TweetContext)
 
+    localStorage.setItem('theme', theme)
+
     const handleCheckChange = () => {
       if(theme === 'dark') {
         setTheme('light');
@@ -14,7 +16,8 @@ export default function Header() {
     }
 
     const handleButtonClick = () => {
-      console.log("CLICK!");
+        setTheme('light')
+        localStorage.removeItem('theme')
     }
 
     return (
