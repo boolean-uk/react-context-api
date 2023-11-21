@@ -1,8 +1,10 @@
 import { useContext, useState } from "react";
 import { TweetContents } from "../App";
+import { ThemeContext } from "../App";
 
 export default function Header() {
-  const { theme, user } = useContext(TweetContents);
+  const { user } = useContext(TweetContents);
+  const { theme, setTheme } = useContext(ThemeContext);
 
   const handleCheckChange = () => {
     if (theme === "dark") {
@@ -13,6 +15,8 @@ export default function Header() {
   };
 
   const handleButtonClick = () => {
+    localStorage.removeItem("theme");
+    setTheme("light");
     console.log("CLICK!");
   };
 

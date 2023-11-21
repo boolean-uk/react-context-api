@@ -2,9 +2,11 @@ import CreateTweet from "./CreateTweet";
 import Tweet from "./Tweet";
 import { useContext } from "react";
 import { TweetContents } from "../App";
+import { ThemeContext } from "../App";
 
 export default function Tweets() {
-  const { tweets, setTweets, theme, user } = useContext(TweetContents);
+  const { tweets, setTweets,  user } = useContext(TweetContents);
+  const {theme} = useContext(ThemeContext)
 
   return (
     <main>
@@ -19,7 +21,7 @@ export default function Tweets() {
       </div>
 
       {tweets.map((tweet, index) => (
-        <Tweet tweet={tweet} theme={theme} key={index} />
+        <Tweet tweet={tweet} key={index} />
       ))}
     </main>
   );

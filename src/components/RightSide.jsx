@@ -1,10 +1,10 @@
 import imgElon from "../assets/images/elon.jpg";
 import imgZuck from "../assets/images/zuck.jpg";
 import { useContext } from "react";
-import { TweetContents } from "../App.jsx";
+import { ThemeContext } from "../App.jsx";
 
 export default function RightSide() {
-  const { theme } = useContext(TweetContents);
+  const { theme } = useContext(ThemeContext);
   return (
     <aside>
       <div
