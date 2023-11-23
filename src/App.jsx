@@ -1,29 +1,37 @@
-import { useEffect, useState } from 'react'
-import Header from './components/Header'
-import Tweets from './components/Tweets'
-import RightSide from './components/RightSide'
-import defaultTweets from './assets/data/tweets.js'
-import user from './assets/data/user.js'
+import { useEffect, useState, createContext } from "react";
+import Header from "./components/Header";
+import Tweets from "./components/Tweets";
+import RightSide from "./components/RightSide";
+import defaultTweets from "./assets/data/tweets.js";
+import user from "./assets/data/user.js";
+
+const UserContext = createContext();
+const PostsContext = createContext();
+const INITIAL_THEME = localStorage.getItem("theme");
 
 function App() {
-    const [tweets, setTweets] = useState(defaultTweets)
-    const [theme, setTheme] = useState('light');
+  const [tweets, setTweets] = useState(defaultTweets);
+  const [theme, setTheme] = useState(INITIAL_THEME);
 
-    useEffect(() => {
-        theme === 'light'
-          ? document.body.style.backgroundColor = 'white'
-          : document.body.style.backgroundColor = 'black'
-    }, [theme])
+  useEffect(() => {
+    theme === "light"
+      ? (document.body.style.backgroundColor = "white")
+      : (document.body.style.backgroundColor = "black");
+  }, [theme]);
 
-    return (
+  return (
+    <PostsContext.Provider value={{ user, tweets, setTweets }}>
+      <UserContext.Provider value={{ theme, setTheme }}>
         <div className="container">
-            <Header user={user} theme={theme} setTheme={setTheme} />
-            <Tweets tweets={tweets} setTweets={setTweets} user={user} theme={theme}  />
-            <RightSide theme={theme} />
+          <Header />
+          <Tweets />
+          <RightSide />
         </div>
-    )
+      </UserContext.Provider>
+    </PostsContext.Provider>
+  );
 }
 
 // NOTE! Instead of `export default App` we use `export { App }` here because we have
 // more than one thing to export from this file.
-export { App };
+export { App, PostsContext, UserContext };
