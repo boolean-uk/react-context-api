@@ -9,9 +9,15 @@ export default function Header() {
     } else {
       setTheme("dark");
     }
+    localStorage.setItem(
+      "theme",
+      JSON.stringify({ theme: theme === "dark" ? "light" : "dark" })
+    );
   };
   const handleButtonClick = () => {
     console.log("CLICK!");
+    localStorage.clear();
+    setTheme("light");
   };
   return (
     <header className={theme}>
@@ -93,7 +99,6 @@ export default function Header() {
         <div className="profile-icon">
           <img src={user.profileImage} />
         </div>
-
         <div className="profile-details">
           <h4>{user.name}</h4>
           <small>{user.handle}</small>

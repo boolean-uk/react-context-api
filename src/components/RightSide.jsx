@@ -22,7 +22,6 @@ export default function RightSide() {
       </div>
       <div className={theme === "dark" ? "widget dark" : "widget"}>
         <h1>What's happening</h1>
-
         <div className="news-block">
           <div className="content">
             <small>Entertainment · Trending</small>
