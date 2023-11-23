@@ -21,16 +21,17 @@ function App() {
 
     return (
         <div className="container">
-            <ThemeContext.Provider value={{theme, setTheme}}></ThemeContext.Provider>
+            <ThemeContext.Provider value={{theme, setTheme}}>
             <TweetContext.Provider value={{tweets, user, setTweets}}>
-                <Header theme={theme} setTheme={setTheme}/>
-                <Tweets theme={theme}  />
-                <RightSide theme={theme} />
-            </TweetContext.Provider> 
+                <Header />
+                <Tweets />
+                <RightSide />
+            </TweetContext.Provider>
+            </ThemeContext.Provider>
         </div>
     )
 }
 
-// NOTE! Instead of `export default App` we use `export { App }` here because we have
+// NOTE! Instead of export default App we use export { App } here because we have
 // more than one thing to export from this file.
-export { App, TweetContext, ThemeContext };
+export { App, TweetContext, ThemeContext};
