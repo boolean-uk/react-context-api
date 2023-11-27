@@ -9,6 +9,8 @@ const Initial_Theme = () => {
     }
 }
 
+
+
 export default function Header() {
     const {user} = useContext(AppContext)
     const {theme, setTheme} = useContext(ThemeContext)
@@ -18,14 +20,16 @@ export default function Header() {
     const handleCheckChange = (e) => {
       const {type, checked} = e.target
 
-      setTheme({[type]: checked})
+    //   setTheme({[type]: checked})
       if(theme === 'dark') {
-        setTheme('light');
+        // setTheme('light');
+        setTheme('light', {[type]: checked})
       } else {
-        setTheme('dark');
+        // setTheme('dark');
+        setTheme('dark', {[type]: checked})
       }
 
-      localStorage.setItem(type, checked)
+      localStorage.setItem('theme', theme)
     }
 
     const handleButtonClick = (e) => {

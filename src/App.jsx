@@ -8,24 +8,36 @@ import user from './assets/data/user.js'
 const AppContext = createContext()
 const ThemeContext = createContext()
 
+const getLocalStorageTheme = () => {
+    let theme = localStorage.getItem('light')
+
+    if(localStorage.getItem('theme')) {
+        theme =localStorage.getItem('theme')
+    }
+
+    return theme
+}
+
 function App() {
     const [tweets, setTweets] = useState(defaultTweets)
-    const [theme, setTheme] = useState('light');
+    const [theme, setTheme] = useState(getLocalStorageTheme());
 
     useEffect(() => {
         theme === 'light'
           ? document.body.style.backgroundColor = 'white'
           : document.body.style.backgroundColor = 'black'
+
+          localStorage.setItem('theme', theme)
     }, [theme])
 
     return (
         <ThemeContext.Provider value={{theme, setTheme}}>
         <AppContext.Provider value={{tweets, setTweets, user}}>
-        <div className="container">
-            <Header />
-            <Tweets theme={theme}  />
-            <RightSide theme={theme} />
-        </div>
+            <div className="container">
+                <Header />
+                <Tweets theme={theme}  />
+                <RightSide theme={theme} />
+            </div>
         </AppContext.Provider>
         </ThemeContext.Provider>
     )
