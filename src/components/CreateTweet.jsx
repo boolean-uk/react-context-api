@@ -1,8 +1,13 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import imgDoge from '../assets/images/doge.jpg'
+import { TweetContext, ThemeContext } from '../App'
+import Tweet from './Tweet'
 
-export default function CreateTweet({ tweets, setTweets, user, theme }) {
+export default function CreateTweet() {
     const [content, setContent] = useState('')
+    
+    const { theme } = useContext(ThemeContext)
+    const { user, tweets, setTweets } = useContext(TweetContext)
 
     const addTweet = (e) => {
         e.preventDefault()

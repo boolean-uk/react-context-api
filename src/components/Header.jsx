@@ -1,25 +1,36 @@
-export default function Header({ user, theme, setTheme }) {
-    const handleCheckChange = () => {
-      if(theme === 'dark') {
-        setTheme('light');
-      } else {
-        setTheme('dark');
-      }
-    }
+import { useContext } from "react";
+import { TweetContext, ThemeContext } from "../App"
 
-    const handleButtonClick = () => {
-      console.log("CLICK!");
+export default function Header() {
+    
+    const {theme, setTheme} = useContext(ThemeContext)
+    const {user} = useContext(TweetContext)
+
+    const handleChange = (event) => {
+      if(event.target.value === "reset") {
+        localStorage.removeItem("theme")
+        setTheme("light")
+        return
+      }
+      
+      if (theme === "dark") { 
+        setTheme("light")
+      } else {
+        localStorage.setItem("theme", "dark")
+        setTheme("dark")
+      }
+      
     }
 
     return (
         <header className={theme}>
             <div>
                 <div className="dark-mode-container">
-                    <input id="darkMode" type="checkbox" checked={theme === 'dark'} onChange={handleCheckChange}></input>
+                    <input id="darkMode" type="checkbox" checked={theme === 'dark'} onChange={(event) => handleChange(event)}></input>
                     <label htmlFor="darkMode">Enable Dark Mode</label>
                 </div>
                 <div>
-                    <button className="clear-settings-btn" onClick={handleButtonClick}>Clear Locally Saved Settings</button>
+                    <button className="clear-settings-btn" value={"reset"} onClick={(event) => handleChange(event)}>Clear Locally Saved Settings</button>
                 </div>
             </div>
             <div className="logo">
