@@ -8,9 +8,18 @@ import user from "./assets/data/user.js";
 const TweetContext = createContext();
 const ThemeContext = createContext();
 
+const INITIAL_THEME = {
+  theme: "light",
+};
+
 function App() {
+  const loadThemeFromLocalStorage = () => {
+    const storedTheme = localStorage.getItem("theme");
+    return storedTheme || INITIAL_THEME.theme;
+  };
+
   const [tweets, setTweets] = useState(defaultTweets);
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState(loadThemeFromLocalStorage());
 
   useEffect(() => {
     theme === "light"
