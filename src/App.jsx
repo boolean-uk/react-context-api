@@ -6,12 +6,28 @@ import defaultTweets from "./assets/data/tweets.js";
 import user from "./assets/data/user.js";
 
 export const TweetContext = createContext(defaultTweets);
-export const ThemeContext = createContext("light");
+export const ThemeContext = createContext({ theme: "light", setTheme: null });
 export const UserContext = createContext(user);
+
+const loadLocalStorageTheme = () => {
+	const theme = localStorage.getItem("theme");
+
+	if (!theme) {
+		localStorage.setItem("theme", "light");
+	}
+
+	if (!(theme === "dark" || theme === "light")) {
+		localStorage.setItem("theme", "light");
+	}
+
+	return theme;
+};
 
 function App() {
 	const [tweets, setTweets] = useState(useContext(TweetContext));
-	const [theme, setTheme] = useState(useContext(ThemeContext));
+	const [theme, setTheme] = useState(loadLocalStorageTheme());
+
+	// ThemeContext = { theme: theme, setTheme: setTheme };
 
 	useEffect(() => {
 		theme === "light"
