@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { ThemeContext } from "../App";
+
 import imgDoge from '../assets/images/doge.jpg'
 
 export default function CreateTweet({ tweets, setTweets, user, theme }) {
