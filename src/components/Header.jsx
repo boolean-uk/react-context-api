@@ -1,9 +1,9 @@
 import { useContext } from "react";
-import { AppContext } from "../App";
+import { ThemeContext, UserContext } from "../App";
 
 export default function Header() {
-  const AppContextValue = useContext(AppContext);
-  //console.log("AppContextValue: ", AppContextValue);
+  const { user } = useContext(UserContext);
+  const { theme, setTheme } = useContext(ThemeContext);
 
   const handleCheckChange = () => {
     if (theme === "dark") {
@@ -18,13 +18,13 @@ export default function Header() {
   };
 
   return (
-    <header className={AppContextValue.theme}>
+    <header className={theme}>
       <div>
         <div className="dark-mode-container">
           <input
             id="darkMode"
             type="checkbox"
-            checked={AppContextValue.theme === "dark"}
+            checked={theme === "dark"}
             onChange={handleCheckChange}
           ></input>
           <label htmlFor="darkMode">Enable Dark Mode</label>
@@ -104,20 +104,14 @@ export default function Header() {
 
       <button className="tweet-btn">Tweet</button>
 
-      <div
-        className={
-          AppContextValue.theme === "dark"
-            ? "profile-card dark"
-            : "profile-card"
-        }
-      >
+      <div className={theme === "dark" ? "profile-card dark" : "profile-card"}>
         <div className="profile-icon">
-          <img src={AppContextValue.user.profileImage} />
+          <img src={user.profileImage} />
         </div>
 
         <div className="profile-details">
-          <h4>{AppContextValue.user.name}</h4>
-          <small>{AppContextValue.user.handle}</small>
+          <h4>{user.name}</h4>
+          <small>{user.handle}</small>
         </div>
 
         <div className="action">
