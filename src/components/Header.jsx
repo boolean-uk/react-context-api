@@ -15,6 +15,8 @@ export default function Header() {
   };
   const handleButtonClick = () => {
     console.log("CLICK!");
+    setTheme("light");
+    localStorage.removeItem("theme");
   };
   return (
     <header className={theme}>
