@@ -1,10 +1,11 @@
 import { useContext } from "react";
 import CreateTweet from "./CreateTweet";
 import Tweet from "./Tweet";
-import { AppContext } from "../App";
+import { AppContext, ThemeContext } from "../App";
 
-export default function Tweets({ theme }) {
+export default function Tweets() {
   const { tweets, setTweets, user } = useContext(AppContext);
+  const { theme } = useContext(ThemeContext);
   return (
     <main>
       <div className={theme === "dark" ? "top-bar dark" : "top-bar"}>
@@ -12,10 +13,10 @@ export default function Tweets({ theme }) {
       </div>
 
       <CreateTweet
-        tweets={tweets}
-        setTweets={setTweets}
-        user={user}
-        theme={theme}
+      //tweets={tweets}
+      //setTweets={setTweets}
+      //user={user}
+      //theme={theme}
       />
 
       <div className="show-more-tweets">
@@ -23,7 +24,7 @@ export default function Tweets({ theme }) {
       </div>
 
       {tweets.map((tweet, index) => (
-        <Tweet tweet={tweet} theme={theme} key={index} />
+        <Tweet key={index} tweet={tweet} /*theme={theme}*/ />
       ))}
     </main>
   );
