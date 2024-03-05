@@ -1,8 +1,11 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import imgDoge from '../assets/images/doge.jpg'
+import { TweetContext, ThemeContext } from '../App'
 
-export default function CreateTweet({ tweets, setTweets, user, theme }) {
+export default function CreateTweet() {
     const [content, setContent] = useState('')
+    const {tweets, setTweets, user} = useContext(TweetContext)
+    const { theme } = useContext(ThemeContext)
 
     const addTweet = (e) => {
         e.preventDefault()
@@ -21,18 +24,21 @@ export default function CreateTweet({ tweets, setTweets, user, theme }) {
     }
 
     return (
+        // Condition to make className
         <div className={theme === 'dark' ? 'create-tweet dark' : 'create-tweet'}>
             <form onSubmit={addTweet}>
                 <div className="avatar-section">
                     <div className="profile-icon"><img src={imgDoge}/></div>
                 </div>
 
+                {/* Textholder to write tweet: */}
                 <div className="textarea-section">
                     <textarea
                     className="content"
                     type="text"
                     placeholder="What is happening?!"
                     value={content}
+                    // This line assign Content to the value
                     onChange={(e) => setContent(e.target.value)}
                     ></textarea>
                 </div>
@@ -40,6 +46,7 @@ export default function CreateTweet({ tweets, setTweets, user, theme }) {
                 <div></div>
 
                 <div className="actions-section">
+                    {/* Example of how to display "icons" */}
                     <div className="actions">
                         <i className="fa-regular fa-image action-icon"></i>
                         <i className="fa-solid fa-list action-icon"></i>
@@ -47,7 +54,8 @@ export default function CreateTweet({ tweets, setTweets, user, theme }) {
                         <i className="fa-regular fa-calendar action-icon"></i>
                         <i className="fa-solid fa-location-dot action-icon"></i>
                     </div>
-
+                    
+                    {/* Summit button: !!! With condition for disabled. */}
                     <button type="submit" disabled={content.length < 1} className="tweet-btn">Tweet</button>
                 </div>
             </form>
