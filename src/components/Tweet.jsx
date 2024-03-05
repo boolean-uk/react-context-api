@@ -1,20 +1,32 @@
-export default function Tweet({ tweet, theme }) {
+import { useContext } from "react";
+import { themeContext } from "../App";
+
+export default function Tweet({ tweet }) {
+    const { theme } = useContext(themeContext);
+
     return (
-        <article className={theme === 'dark' ? 'tweet dark' : 'tweet'}>
-            <div className="profile-icon"><img src={tweet.profileImage}/></div>
+        <article className={theme === "dark" ? "tweet dark" : "tweet"}>
+            <div className="profile-icon">
+                <img src={tweet.profileImage} />
+            </div>
 
             <div className="tweet-content">
-                <h4>{tweet.name} <span>{tweet.handle} · {tweet.date}</span></h4>
+                <h4>
+                    {tweet.name}{" "}
+                    <span>
+                        {tweet.handle} · {tweet.date}
+                    </span>
+                </h4>
                 <p>{tweet.content}</p>
 
-                {tweet.article &&
+                {tweet.article && (
                     <div className="tweet-article">
                         <img src={tweet.article.image} />
                         <small>{tweet.article.site}</small>
                         <h5>{tweet.article.title}</h5>
                         <p>{tweet.article.content}</p>
                     </div>
-                }
+                )}
 
                 <div className="tweet-actions">
                     <span>
@@ -43,5 +55,5 @@ export default function Tweet({ tweet, theme }) {
                 </div>
             </div>
         </article>
-    )
+    );
 }

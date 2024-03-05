@@ -1,39 +1,47 @@
-import { useState } from 'react'
-import imgDoge from '../assets/images/doge.jpg'
+import { useContext, useState } from "react";
+import imgDoge from "../assets/images/doge.jpg";
+import { themeContext, tweetContext } from "../App";
 
-export default function CreateTweet({ tweets, setTweets, user, theme }) {
-    const [content, setContent] = useState('')
+export default function CreateTweet() {
+    const { user, tweets, setTweets } = useContext(tweetContext);
+    const { theme } = useContext(themeContext);
+
+    const [content, setContent] = useState("");
 
     const addTweet = (e) => {
-        e.preventDefault()
+        e.preventDefault();
         setTweets([
             {
                 ...user,
-                date: '1m',
+                date: "1m",
                 content,
                 commentCount: 0,
                 retweetCount: 0,
                 heartCount: 0,
-                analyticsCount: 0
+                analyticsCount: 0,
             },
-            ...tweets
-        ])
-    }
+            ...tweets,
+        ]);
+    };
 
     return (
-        <div className={theme === 'dark' ? 'create-tweet dark' : 'create-tweet'}>
+        <div
+            className={theme === "dark" ? "create-tweet dark" : "create-tweet"}
+        >
             <form onSubmit={addTweet}>
                 <div className="avatar-section">
-                    <div className="profile-icon"><img src={imgDoge}/></div>
+                    <div className="profile-icon">
+                        <img src={imgDoge} />
+                    </div>
                 </div>
 
                 <div className="textarea-section">
                     <textarea
-                    className="content"
-                    type="text"
-                    placeholder="What is happening?!"
-                    value={content}
-                    onChange={(e) => setContent(e.target.value)}
+                        className="content"
+                        type="text"
+                        placeholder="What is happening?!"
+                        value={content}
+                        onChange={(e) => setContent(e.target.value)}
                     ></textarea>
                 </div>
 
@@ -48,9 +56,15 @@ export default function CreateTweet({ tweets, setTweets, user, theme }) {
                         <i className="fa-solid fa-location-dot action-icon"></i>
                     </div>
 
-                    <button type="submit" disabled={content.length < 1} className="tweet-btn">Tweet</button>
+                    <button
+                        type="submit"
+                        disabled={content.length < 1}
+                        className="tweet-btn"
+                    >
+                        Tweet
+                    </button>
                 </div>
             </form>
         </div>
-    )
+    );
 }
