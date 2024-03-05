@@ -8,14 +8,17 @@ export default function Header() {
 
     const handleCheckChange = () => {
       if(theme === 'dark') {
+        localStorage.setItem('theme','light');
         setTheme('light');
       } else {
         setTheme('dark');
+        localStorage.setItem('theme', 'dark')
       }
     }
 
-    const handleButtonClick = () => {
-      console.log("CLICK!");
+    const handleButtonClick = () => {   
+        localStorage.removeItem('theme')
+        setTheme('light');
     }
 
     return (
