@@ -16,15 +16,17 @@ function App() {
     }, [theme]);
 
     return (
-        <tweetContext.Provider
-            value={{ user: user, tweets: tweets, setTweets: setTweets }}
-        >
-            <div className="container">
-                <Header theme={theme} setTheme={setTheme} />
-                <Tweets theme={theme} />
-                <RightSide theme={theme} />
-            </div>
-        </tweetContext.Provider>
+        <themeContext.Provider value={{ theme: theme, setTheme: setTheme }}>
+            <tweetContext.Provider
+                value={{ user: user, tweets: tweets, setTweets: setTweets }}
+            >
+                <div className="container">
+                    <Header />
+                    <Tweets />
+                    <RightSide />
+                </div>
+            </tweetContext.Provider>
+        </themeContext.Provider>
     );
 }
 
@@ -32,3 +34,4 @@ function App() {
 // more than one thing to export from this file.
 export { App };
 export const tweetContext = createContext();
+export const themeContext = createContext();

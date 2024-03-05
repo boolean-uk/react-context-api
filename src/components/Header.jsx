@@ -1,8 +1,9 @@
 import { useContext } from "react";
-import { tweetContext } from "../App";
+import { themeContext, tweetContext } from "../App";
 
-export default function Header({ theme, setTheme }) {
+export default function Header() {
     const { user } = useContext(tweetContext);
+    const { theme, setTheme } = useContext(themeContext);
 
     const handleCheckChange = () => {
         if (theme === "dark") {
