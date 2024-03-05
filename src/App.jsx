@@ -1,26 +1,43 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, createContext } from 'react'
 import Header from './components/Header'
 import Tweets from './components/Tweets'
 import RightSide from './components/RightSide'
 import defaultTweets from './assets/data/tweets.js'
 import user from './assets/data/user.js'
 
+export const tweetContext = createContext()
+export const themeContext = createContext()
+
 function App() {
     const [tweets, setTweets] = useState(defaultTweets)
-    const [theme, setTheme] = useState('light');
+    const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+
+    const toggleTheme = () => {
+        const toggledTheme = theme === "light" ? "dark" : "light"
+        localStorage.setItem("theme", toggledTheme)
+        setTheme(toggledTheme)
+    }
 
     useEffect(() => {
         theme === 'light'
           ? document.body.style.backgroundColor = 'white'
           : document.body.style.backgroundColor = 'black'
-    }, [theme])
+    }, [localStorage.getItem("theme")])
 
     return (
-        <div className="container">
-            <Header user={user} theme={theme} setTheme={setTheme} />
-            <Tweets tweets={tweets} setTweets={setTweets} user={user} theme={theme}  />
-            <RightSide theme={theme} />
-        </div>
+        <themeContext.Provider 
+            value={{theme: theme, setTheme: setTheme, toggleTheme: toggleTheme}}
+        >
+            <tweetContext.Provider 
+                value={{user: user, tweets: tweets, setTweets: setTweets}}
+            >
+            <div className="container">
+                <Header/>
+                <Tweets/>
+                <RightSide/>
+            </div>
+            </tweetContext.Provider>
+        </themeContext.Provider>
     )
 }
 
