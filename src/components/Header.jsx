@@ -1,8 +1,11 @@
 import { useContext } from 'react';
 import { MyContext } from '../App';
+import { ThemeContext } from '../App';
 
-export default function Header({theme}) {
-    const Headercontext = useContext( MyContext); // Access user from context
+export default function Header() {
+    const { user } = useContext(MyContext);
+    const { theme, setTheme } = useContext(ThemeContext);
+
     const handleCheckChange = () => {
       if(theme === 'dark') {
         setTheme('light');
@@ -96,11 +99,11 @@ export default function Header({theme}) {
             <button className="tweet-btn">Tweet</button>
 
             <div className={theme === 'dark' ? 'profile-card dark' : 'profile-card'}>
-                <div className="profile-icon"><img src={Headercontext.user.profileImage}/></div>
+                <div className="profile-icon"><img src={user.profileImage}/></div>
 
                 <div className="profile-details">
-                    <h4>{Headercontext.user.name}</h4>
-                    <small>{Headercontext.user.handle}</small>
+                    <h4>{user.name}</h4>
+                    <small>{user.handle}</small>
                 </div>
 
                 <div className="action">
