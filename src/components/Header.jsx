@@ -1,4 +1,9 @@
-export default function Header({ user, theme, setTheme }) {
+import { useContext } from "react";
+import { ContextAPIContext } from "../context/ContextAPI";
+
+export default function Header() {
+
+    const { user, theme, setTheme } = useContext(ContextAPIContext)
     const handleCheckChange = () => {
       if(theme === 'dark') {
         setTheme('light');
