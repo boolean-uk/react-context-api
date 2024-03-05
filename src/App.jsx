@@ -7,7 +7,11 @@ import user from "./assets/data/user.js";
 
 function App() {
     const [tweets, setTweets] = useState(defaultTweets);
-    const [theme, setTheme] = useState("light");
+    const [theme, setTheme] = useState(() => {
+        const initialTheme = localStorage.getItem("theme");
+        console.log("first set");
+        return initialTheme ? initialTheme : "light";
+    });
 
     useEffect(() => {
         theme === "light"
