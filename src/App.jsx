@@ -22,7 +22,7 @@ function App() {
         theme === 'light'
           ? document.body.style.backgroundColor = 'white'
           : document.body.style.backgroundColor = 'black'
-    }, [localStorage.getItem("theme")])
+    }, [theme])
 
     return (
         <themeContext.Provider 
