@@ -1,29 +1,48 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, createContext } from 'react'
 import Header from './components/Header'
 import Tweets from './components/Tweets'
 import RightSide from './components/RightSide'
 import defaultTweets from './assets/data/tweets.js'
 import user from './assets/data/user.js'
 
-function App() {
+export const TwitterContext = createContext()
+export function App() {
     const [tweets, setTweets] = useState(defaultTweets)
-    const [theme, setTheme] = useState('light');
+
+    const [theme, toggleTheme] = useState(() => {
+        const initialTheme = localStorage.getItem("theme");
+        console.log("first set");
+        return initialTheme ? initialTheme : "light";
+    });
+
+    const setTheme = () => {
+        toggleTheme((prevTheme) => {
+            const newTheme = prevTheme === "light" ? "dark" : "light";
+            localStorage.setItem("theme", newTheme);
+            return newTheme;
+        });
+    };
 
     useEffect(() => {
         theme === 'light'
-          ? document.body.style.backgroundColor = 'white'
-          : document.body.style.backgroundColor = 'black'
+            ? document.body.style.backgroundColor = 'white'
+            : document.body.style.backgroundColor = 'black'
     }, [theme])
 
     return (
-        <div className="container">
-            <Header user={user} theme={theme} setTheme={setTheme} />
-            <Tweets tweets={tweets} setTweets={setTweets} user={user} theme={theme}  />
-            <RightSide theme={theme} />
-        </div>
+        <TwitterContext.Provider value={
+            {
+                tweets: tweets,
+                setTweets: setTweets,
+                theme: theme,
+                setTheme: setTheme,
+                user: user
+            }}>
+            <div className="container">
+                <Header />
+                <Tweets />
+                <RightSide />
+            </div>
+        </TwitterContext.Provider>
     )
 }
-
-// NOTE! Instead of `export default App` we use `export { App }` here because we have
-// more than one thing to export from this file.
-export { App };
