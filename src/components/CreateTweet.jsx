@@ -1,7 +1,10 @@
 import { useState } from 'react'
 import imgDoge from '../assets/images/doge.jpg'
+import { useContext } from "react";
+import { TwitterContext } from "../App";
 
-export default function CreateTweet({ tweets, setTweets, user, theme }) {
+export default function CreateTweet() {
+    const { tweets, setTweets, user, theme } = useContext(TwitterContext)
     const [content, setContent] = useState('')
 
     const addTweet = (e) => {
@@ -24,16 +27,16 @@ export default function CreateTweet({ tweets, setTweets, user, theme }) {
         <div className={theme === 'dark' ? 'create-tweet dark' : 'create-tweet'}>
             <form onSubmit={addTweet}>
                 <div className="avatar-section">
-                    <div className="profile-icon"><img src={imgDoge}/></div>
+                    <div className="profile-icon"><img src={imgDoge} /></div>
                 </div>
 
                 <div className="textarea-section">
                     <textarea
-                    className="content"
-                    type="text"
-                    placeholder="What is happening?!"
-                    value={content}
-                    onChange={(e) => setContent(e.target.value)}
+                        className="content"
+                        type="text"
+                        placeholder="What is happening?!"
+                        value={content}
+                        onChange={(e) => setContent(e.target.value)}
                     ></textarea>
                 </div>
 
