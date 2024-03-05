@@ -1,14 +1,21 @@
-export default function Header({ user, theme, setTheme }) {
+import { useContext } from "react";
+import { UserContext } from "../App";
+
+export default function Header() {
+    const { user, theme, setTheme } = useContext(UserContext);
     const handleCheckChange = () => {
       if(theme === 'dark') {
+        localStorage.setItem('theme', 'light')
         setTheme('light');
       } else {
         setTheme('dark');
+        localStorage.setItem('theme', 'dark')
       }
     }
 
     const handleButtonClick = () => {
-      console.log("CLICK!");
+        localStorage.removeItem('theme')
+        setTheme('light');
     }
 
     return (
