@@ -1,21 +1,30 @@
-export default function Header({ user, theme, setTheme }) {
+import { ContextData, ContextTheme } from "../App";
+import { useContext } from "react";
+
+
+export default function Header() {
+    const contextTheme = useContext(ContextTheme)
+    const contextData = useContext(ContextData)
+
     const handleCheckChange = () => {
-      if(theme === 'dark') {
-        setTheme('light');
-      } else {
-        setTheme('dark');
-      }
+        if(contextTheme.theme === 'dark') {
+            contextTheme.setTheme('light');
+            localStorage.setItem("theme", 'light') // Tried setting it to contexTheme.theme outside the if statement, but i seem to be saving the opposite value of what it currently is 
+        } else {
+            contextTheme.setTheme('dark');
+            localStorage.setItem("theme", 'dark')
+        }
     }
 
     const handleButtonClick = () => {
-      console.log("CLICK!");
+      localStorage.removeItem("theme")
     }
 
     return (
-        <header className={theme}>
+        <header className={contextTheme.theme}>
             <div>
                 <div className="dark-mode-container">
-                    <input id="darkMode" type="checkbox" checked={theme === 'dark'} onChange={handleCheckChange}></input>
+                    <input id="darkMode" type="checkbox" checked={contextTheme.theme === 'dark'} onChange={handleCheckChange}></input>
                     <label htmlFor="darkMode">Enable Dark Mode</label>
                 </div>
                 <div>
@@ -91,12 +100,12 @@ export default function Header({ user, theme, setTheme }) {
 
             <button className="tweet-btn">Tweet</button>
 
-            <div className={theme === 'dark' ? 'profile-card dark' : 'profile-card'}>
-                <div className="profile-icon"><img src={user.profileImage}/></div>
+            <div className={contextTheme.theme === 'dark' ? 'profile-card dark' : 'profile-card'}>
+                <div className="profile-icon"><img src={contextData.user.profileImage}/></div>
 
                 <div className="profile-details">
-                    <h4>{user.name}</h4>
-                    <small>{user.handle}</small>
+                    <h4>{contextData.user.name}</h4>
+                    <small>{contextData.user.handle}</small>
                 </div>
 
                 <div className="action">
