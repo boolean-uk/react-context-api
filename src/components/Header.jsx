@@ -1,9 +1,10 @@
 import { useContext } from "react";
-import { MyContext } from "../App";
+import { MyContext, ThemeContext } from "../App";
 
 export default function Header() {
 
-    const { user, theme, setTheme } = useContext(MyContext);
+    const { user } = useContext(MyContext);
+    const { theme, setTheme } = useContext(ThemeContext);
 
     const handleCheckChange = () => {
       if(theme === 'dark') {
