@@ -6,15 +6,21 @@ import defaultTweets from "./assets/data/tweets.js";
 import user from "./assets/data/user.js";
 
 const MyContext = createContext();
+const ThemeContext = createContext();
 
 function App() {
   const [tweets, setTweets] = useState(defaultTweets);
   const [theme, setTheme] = useState("light");
 
   useEffect(() => {
-    theme === "light"
-      ? (document.body.style.backgroundColor = "white")
-      : (document.body.style.backgroundColor = "black");
+      const storedTheme = localStorage.getItem('theme');
+      if (storedTheme) {
+          setTheme(storedTheme);
+      }
+  }, []);
+
+  useEffect(() => {
+    document.body.style.backgroundColor = theme === "light" ? "white" : "black";
   }, [theme]);
 
   return (
