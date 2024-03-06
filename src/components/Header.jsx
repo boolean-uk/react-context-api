@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect  } from "react";
 import { MyContext } from "../App";
 
 
@@ -6,18 +6,33 @@ export default function Header() {
 
     const context = useContext(MyContext)
 
-
+    // Enable Dark Mode checkbox
     const handleCheckChange = () => {
       if(context.theme === 'dark') {
         context.setTheme('light');
+        localStorage.setItem('theme', 'light')
+
       } else {
         context.setTheme('dark');
+        localStorage.setItem('theme', 'dark')
       }
     }
 
+    // Clear Locally Saved Settings button
     const handleButtonClick = () => {
       console.log("CLICK!");
+      localStorage.removeItem('theme');
+      context.setTheme('light')
     }
+
+    // When theme is changed, update theme to theme in local storage
+    useEffect(() => {
+        const locallyStoredTheme = localStorage.getItem('theme');
+        if (locallyStoredTheme) {
+            context.setTheme(locallyStoredTheme);
+        }
+    }, [context.theme]);
+
 
     return (
         <header className={context.theme}>
