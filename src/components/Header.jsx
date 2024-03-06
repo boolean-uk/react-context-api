@@ -1,14 +1,28 @@
-export default function Header({ user, theme, setTheme }) {
+import { useContext } from 'react'
+import { UserContext, ThemeContext } from '../App'
+
+export default function Header() {
+    const { user } = useContext(UserContext)
+    const { theme, setTheme } = useContext(ThemeContext)
+
     const handleCheckChange = () => {
-      if(theme === 'dark') {
-        setTheme('light');
-      } else {
-        setTheme('dark');
-      }
+        if (theme === 'dark') {
+            setTheme('light');
+        } else {
+            setTheme('dark');
+        }
+
+        //save in local storage
+        localStorage.setItem("theme", theme)
     }
 
     const handleButtonClick = () => {
-      console.log("CLICK!");
+        //clear local storage
+        localStorage.clear()
+        //set theme to light
+        setTheme('light');
+
+        //console.log("CLICK!");
     }
 
     return (
@@ -92,7 +106,7 @@ export default function Header({ user, theme, setTheme }) {
             <button className="tweet-btn">Tweet</button>
 
             <div className={theme === 'dark' ? 'profile-card dark' : 'profile-card'}>
-                <div className="profile-icon"><img src={user.profileImage}/></div>
+                <div className="profile-icon"><img src={user.profileImage} /></div>
 
                 <div className="profile-details">
                     <h4>{user.name}</h4>
