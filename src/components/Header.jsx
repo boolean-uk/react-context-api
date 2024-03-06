@@ -1,10 +1,14 @@
-export default function Header({ user, theme, setTheme }) {
+import { useContext } from "react";
+import { StorageContext, ThemeContext } from "../App";
+
+export default function Header() {
+    const _storage = useContext(StorageContext)
+    const _theme = useContext(ThemeContext)
+
     const handleCheckChange = () => {
-      if(theme === 'dark') {
-        setTheme('light');
-      } else {
-        setTheme('dark');
-      }
+        _theme.theme = _theme.theme === 'dark' ? 'light' : 'dark'
+        _theme.setTheme.setTheme(_theme.theme)
+        localStorage.setItem("theme_mode", _theme.theme)
     }
 
     const handleButtonClick = () => {
@@ -12,10 +16,10 @@ export default function Header({ user, theme, setTheme }) {
     }
 
     return (
-        <header className={theme}>
+        <header className={_theme.theme}>
             <div>
                 <div className="dark-mode-container">
-                    <input id="darkMode" type="checkbox" checked={theme === 'dark'} onChange={handleCheckChange}></input>
+                    <input id="darkMode" type="checkbox" checked={_theme.theme === 'dark'} onChange={handleCheckChange}></input>
                     <label htmlFor="darkMode">Enable Dark Mode</label>
                 </div>
                 <div>
@@ -91,12 +95,12 @@ export default function Header({ user, theme, setTheme }) {
 
             <button className="tweet-btn">Tweet</button>
 
-            <div className={theme === 'dark' ? 'profile-card dark' : 'profile-card'}>
-                <div className="profile-icon"><img src={user.profileImage}/></div>
+            <div className={_theme.theme === 'dark' ? 'profile-card dark' : 'profile-card'}>
+                <div className="profile-icon"><img src={_storage.user.profileImage}/></div>
 
                 <div className="profile-details">
-                    <h4>{user.name}</h4>
-                    <small>{user.handle}</small>
+                    <h4>{_storage.user.name}</h4>
+                    <small>{_storage.user.handle}</small>
                 </div>
 
                 <div className="action">
