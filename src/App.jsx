@@ -9,8 +9,9 @@ export const DataContext = createContext()
 export const ThemeContext = createContext()
 
 function App() {
+    const storedTheme = localStorage.getItem('theme')
     const [tweets, setTweets] = useState(defaultTweets)
-    const [theme, setTheme] = useState('light');
+    const [theme, setTheme] = useState(storedTheme || 'light');
 
     useEffect(() => {
         theme === 'light'
@@ -32,6 +33,4 @@ function App() {
     )
 }
 
-// NOTE! Instead of `export default App` we use `export { App }` here because we have
-// more than one thing to export from this file.
 export { App };
