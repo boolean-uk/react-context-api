@@ -12,6 +12,11 @@ function App() {
     const [theme, setTheme] = useState('light');
 
     useEffect(() => {
+
+        if(localStorage.getItem('theme')) {
+            setTheme(localStorage.getItem('theme'))
+        }
+
         theme === 'light'
           ? document.body.style.backgroundColor = 'white'
           : document.body.style.backgroundColor = 'black'
