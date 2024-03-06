@@ -1,9 +1,9 @@
 import { useContext } from "react";
-import { MyContext, ThemeContext } from "../App";
+import { ThemeContext, TweetContext } from "../App";
 
 export default function Header() {
 
-    const { user } = useContext(MyContext);
+    const { user } = useContext(TweetContext);
     const { theme, setTheme } = useContext(ThemeContext);
 
     const handleCheckChange = () => {

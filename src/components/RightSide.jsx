@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { MyContext, ThemeContext } from '../App';
+import { ThemeContext } from '../App';
 import imgElon from '../assets/images/elon.jpg'
 import imgZuck from '../assets/images/zuck.jpg'
 

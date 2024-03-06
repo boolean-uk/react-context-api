@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { MyContext, ThemeContext } from "../App";
+import { ThemeContext } from "../App";
 
 export default function Tweet({tweet}) {
 
