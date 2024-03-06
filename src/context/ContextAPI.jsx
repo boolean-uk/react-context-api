@@ -3,7 +3,7 @@ import user from '../assets/data/user'
 import defaultTweets from '../assets/data/tweets.js'
 
 const ContextAPIContext = createContext();
-
+const ThemeAPIContext = createContext();
 
 
 const ContextAPIProvider = ({children}) => {
@@ -30,4 +30,24 @@ const ContextAPIProvider = ({children}) => {
 }
 
 
-export {ContextAPIProvider, ContextAPIContext}
+
+const ThemeAPIProvider = ({children}) => {
+    const [theme, setTheme] = useState('light');
+    
+
+    
+    return (
+
+    <ThemeAPIContext.Provider
+    value={{
+        setTheme,
+        theme,
+    }}>
+    
+    {children}
+    </ThemeAPIContext.Provider>
+
+    )
+}
+
+export {ContextAPIProvider, ContextAPIContext, ThemeAPIProvider, ThemeAPIContext}

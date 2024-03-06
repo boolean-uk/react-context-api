@@ -2,13 +2,19 @@ import { useContext, useEffect } from 'react'
 import Header from './Header'
 import Tweets from './Tweets'
 import RightSide from './RightSide'
-import { ContextAPIContext } from '../context/ContextAPI';
+import { ThemeAPIContext, ThemeAPIProvider } from '../context/ContextAPI';
+
 
 
 export default function Page() {
-    const {theme} = useContext(ContextAPIContext);
+    const {theme, setTheme} = useContext(ThemeAPIContext);
 
     useEffect(() => {
+      const storedTheme = localStorage.getItem("theme");
+      if(storedTheme) {
+        setTheme(storedTheme);
+      }
+      
         theme === 'light'
           ? document.body.style.backgroundColor = 'white'
           : document.body.style.backgroundColor = 'black'
@@ -16,9 +22,12 @@ export default function Page() {
 
   return (
 
-            <><Header />
-            <Tweets />
-            <RightSide />
+            <>
+              <Header />
+              <Tweets />
+              <RightSide />
+       
+
             </>
 
     )

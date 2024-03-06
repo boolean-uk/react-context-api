@@ -1,9 +1,9 @@
 import { useContext } from "react"
-import { ContextAPIContext } from "../context/ContextAPI"
+import { ContextAPIContext, ThemeAPIContext } from "../context/ContextAPI"
 
 export default function Tweet({tweet}) {
 
-    const { theme } = useContext(ContextAPIContext)
+    const { theme } = useContext(ThemeAPIContext)
 
 
 

@@ -1,5 +1,5 @@
 
-import {ContextAPIContext, ContextAPIProvider} from './context/ContextAPI.jsx'
+import {ContextAPIContext, ContextAPIProvider, ThemeAPIProvider} from './context/ContextAPI.jsx'
 import Page from './components/Page.jsx'
 
 function App() {
@@ -9,7 +9,9 @@ function App() {
     return (
         <div className="container">
             <ContextAPIProvider>
+                <ThemeAPIProvider>
                 <Page />
+                </ThemeAPIProvider>
             </ContextAPIProvider>
 
         </div>
