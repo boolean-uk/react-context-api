@@ -1,12 +1,17 @@
 import { useState } from 'react'
 import imgDoge from '../assets/images/doge.jpg'
+import { ThemeContext, TweetContext } from "../App.jsx"
+import { useContext } from "react"
 
-export default function CreateTweet({ tweets, setTweets, user, theme }) {
+export default function CreateTweet() {
+    const tweetContext = useContext(TweetContext)
+    const themeContext = useContext(ThemeContext)
+
     const [content, setContent] = useState('')
 
     const addTweet = (e) => {
         e.preventDefault()
-        setTweets([
+        tweetContext.setTweets([
             {
                 ...user,
                 date: '1m',
@@ -21,7 +26,7 @@ export default function CreateTweet({ tweets, setTweets, user, theme }) {
     }
 
     return (
-        <div className={theme === 'dark' ? 'create-tweet dark' : 'create-tweet'}>
+        <div className={themeContext.theme === 'dark' ? 'create-tweet dark' : 'create-tweet'}>
             <form onSubmit={addTweet}>
                 <div className="avatar-section">
                     <div className="profile-icon"><img src={imgDoge}/></div>
