@@ -1,7 +1,12 @@
+import { useContext } from 'react';
+import { MyContext } from '../App';
 import CreateTweet from './CreateTweet'
 import Tweet from './Tweet'
 
-export default function Tweets({ tweets, setTweets, user, theme }) {
+export default function Tweets() {
+
+  const { tweets, tweet, setTweets, user, theme } = useContext(MyContext);
+
   return (
         <main>
             <div className={theme === 'dark' ? 'top-bar dark' : 'top-bar'}>
