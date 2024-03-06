@@ -15,7 +15,7 @@ Inside this project you'll find a Twitter clone react app. The tweets are loaded
 the `App.jsx` component, which are then passed down as props to multiple components. The logged in user is also 
 passed down to a number of components.
 
-### Part 1 - Your First Context
+### Part 1 - Your First Context 
 Your task is to completely remove the prop drilling of the `user` state, the `tweets` state, and the `setTweets`
 function. You wil be replacing them with "application-level state" by using **Context**.
 1. In the **App** component, import `createContext` and use it to create a new Context Component.
