@@ -8,8 +8,10 @@ import user from './assets/data/user.js'
 const twitterContext = createContext()
 
 function App() {
+    const savedTheme = localStorage.getItem("theme")
+
     const [tweets, setTweets] = useState(defaultTweets)
-    const [theme, setTheme] = useState('light');
+    const [theme, setTheme] = useState(savedTheme ? savedTheme : "light");
 
     useEffect(() => {
         theme === 'light'
