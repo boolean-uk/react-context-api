@@ -1,21 +1,34 @@
-export default function Header({ user, theme, setTheme }) {
+import { TweetContext, ThemeContext } from "../App.jsx"
+import { useContext } from "react"
+
+export default function Header() {
+    const themeContext = useContext(ThemeContext)
+    const userContext = useContext(TweetContext)
+
     const handleCheckChange = () => {
-      if(theme === 'dark') {
-        setTheme('light');
+      if(themeContext.theme === 'dark') {
+        themeContext.setTheme('light');
+        localStorage.setItem('theme', JSON.stringify('light'))
+
       } else {
-        setTheme('dark');
+        themeContext.setTheme('dark');
+        localStorage.setItem('theme', JSON.stringify('dark'))
+
       }
     }
 
     const handleButtonClick = () => {
-      console.log("CLICK!");
+        localStorage.removeItem('theme')
+
+        themeContext.setTheme('light')
+        
     }
 
     return (
-        <header className={theme}>
+        <header className={themeContext.theme}>
             <div>
                 <div className="dark-mode-container">
-                    <input id="darkMode" type="checkbox" checked={theme === 'dark'} onChange={handleCheckChange}></input>
+                    <input id="darkMode" type="checkbox" checked={themeContext.theme === 'dark'} onChange={handleCheckChange}></input>
                     <label htmlFor="darkMode">Enable Dark Mode</label>
                 </div>
                 <div>
@@ -91,12 +104,12 @@ export default function Header({ user, theme, setTheme }) {
 
             <button className="tweet-btn">Tweet</button>
 
-            <div className={theme === 'dark' ? 'profile-card dark' : 'profile-card'}>
-                <div className="profile-icon"><img src={user.profileImage}/></div>
+            <div className={themeContext.theme === 'dark' ? 'profile-card dark' : 'profile-card'}>
+                <div className="profile-icon"><img src={userContext.user.profileImage}/></div>
 
                 <div className="profile-details">
-                    <h4>{user.name}</h4>
-                    <small>{user.handle}</small>
+                    <h4>{userContext.user.name}</h4>
+                    <small>{userContext.user.handle}</small>
                 </div>
 
                 <div className="action">
