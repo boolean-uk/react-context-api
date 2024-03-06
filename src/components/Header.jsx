@@ -1,21 +1,32 @@
-export default function Header({ user, theme, setTheme }) {
+import { PostContext } from "../App";
+import { useContext } from "react";
+import { ThemeContext } from "../App";
+
+export default function Header() {
+    const postContext = useContext(PostContext)
+    const themeContext = useContext(ThemeContext)
+
     const handleCheckChange = () => {
-      if(theme === 'dark') {
-        setTheme('light');
+      if(themeContext.theme === 'dark') {
+        themeContext.setTheme('light');
+        localStorage.setItem("mode", "light")
       } else {
-        setTheme('dark');
+        themeContext.setTheme('dark');
+        localStorage.setItem("mode", "dark")
       }
     }
+    
 
     const handleButtonClick = () => {
-      console.log("CLICK!");
+      localStorage.clear()
+      themeContext.setTheme("light")
     }
 
     return (
-        <header className={theme}>
+        <header className={themeContext.theme}>
             <div>
                 <div className="dark-mode-container">
-                    <input id="darkMode" type="checkbox" checked={theme === 'dark'} onChange={handleCheckChange}></input>
+                    <input id="darkMode" type="checkbox" checked={themeContext.theme === 'dark'} onChange={handleCheckChange}></input>
                     <label htmlFor="darkMode">Enable Dark Mode</label>
                 </div>
                 <div>
@@ -91,12 +102,12 @@ export default function Header({ user, theme, setTheme }) {
 
             <button className="tweet-btn">Tweet</button>
 
-            <div className={theme === 'dark' ? 'profile-card dark' : 'profile-card'}>
-                <div className="profile-icon"><img src={user.profileImage}/></div>
+            <div className={themeContext.theme === 'dark' ? 'profile-card dark' : 'profile-card'}>
+                <div className="profile-icon"><img src={postContext.user.profileImage}/></div>
 
                 <div className="profile-details">
-                    <h4>{user.name}</h4>
-                    <small>{user.handle}</small>
+                    <h4>{postContext.user.name}</h4>
+                    <small>{postContext.user.handle}</small>
                 </div>
 
                 <div className="action">
