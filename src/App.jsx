@@ -1,29 +1,54 @@
-import { useEffect, useState } from 'react'
-import Header from './components/Header'
-import Tweets from './components/Tweets'
-import RightSide from './components/RightSide'
-import defaultTweets from './assets/data/tweets.js'
-import user from './assets/data/user.js'
-
+import { useEffect, useState, createContext, useMemo } from "react";
+import Header from "./components/Header";
+import Tweets from "./components/Tweets";
+import RightSide from "./components/RightSide";
+import defaultTweets from "./assets/data/tweets.js";
+import user from "./assets/data/user.js";
+const ThemeContext = createContext();
+const UserTweetContext = createContext();
 function App() {
-    const [tweets, setTweets] = useState(defaultTweets)
-    const [theme, setTheme] = useState('light');
+  const [tweets, setTweets] = useState(defaultTweets);
+  const [theme, setTheme] = useState("light");
 
-    useEffect(() => {
-        theme === 'light'
-          ? document.body.style.backgroundColor = 'white'
-          : document.body.style.backgroundColor = 'black'
-    }, [theme])
+  useEffect(() => {
+    const localTheme = localStorage.getItem("theme");
+    if (localTheme) {
+      setTheme(localTheme);
+    } 
+      theme === "light"
+        ? (document.body.style.backgroundColor = "white")
+        : (document.body.style.backgroundColor = "black");
+    
+  }, [theme]);
 
-    return (
-        <div className="container">
-            <Header user={user} theme={theme} setTheme={setTheme} />
-            <Tweets tweets={tweets} setTweets={setTweets} user={user} theme={theme}  />
-            <RightSide theme={theme} />
-        </div>
-    )
+  // useMemo for performance optimization
+  const themeContextValue = useMemo(
+    () => ({
+      theme: theme,
+      setTheme: setTheme,
+    }),
+    [theme, setTheme]
+  );
+
+  const userTweetContextValue = useMemo(
+    () => ({
+      user: user,
+      tweets: tweets,
+      setTweets: setTweets,
+    }),
+    [user, tweets, setTweets]
+  );
+
+  return (
+    <div className="container">
+      <ThemeContext.Provider value={themeContextValue}>
+        <UserTweetContext.Provider value={userTweetContextValue}>
+          <Header />
+          <Tweets />
+          <RightSide />
+        </UserTweetContext.Provider>
+      </ThemeContext.Provider>
+    </div>
+  );
 }
-
-// NOTE! Instead of `export default App` we use `export { App }` here because we have
-// more than one thing to export from this file.
-export { App };
+export { App, ThemeContext, UserTweetContext };
