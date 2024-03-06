@@ -13,9 +13,19 @@ export const SetTweetsContext = React.createContext()
 export const ThemeContext = React.createContext()
 function App() {
     const [tweets, setTweets] = useState(defaultTweets)
-    const [theme, setTheme] = useState('light');
+    const [theme, setTheme] = useState('dark');
 
 
+    useEffect(() => {
+        const storedTheme = localStorage.getItem("theme")
+        if(storedTheme) {
+            const parsedTheme = (storedTheme)
+            setTheme(parsedTheme) // Update the component's state immediately
+           
+        } else {
+            setTheme("light")
+        }
+    }, [])
 
     useEffect(() => {
         theme === 'light'
@@ -23,24 +33,26 @@ function App() {
           : document.body.style.backgroundColor = 'black'
     }, [theme])
 
-    const contextValue = {
+    
+
+    const themeValue = {
         theme, 
         setTheme
     }
 
     return (
-        <ThemeContext.Provider value={contextValue}>
+        <ThemeContext.Provider value={themeValue}>
         <UserContext.Provider value = {user}>
         <div className="container">
-            <Header theme={theme} setTheme={setTheme} />
+            <Header />
 
             <TweetsContext.Provider value={tweets}>
             <SetTweetsContext.Provider value={setTweets}>
-            <Tweets theme={theme}  />
+            <Tweets/>
             </SetTweetsContext.Provider>
             </TweetsContext.Provider>
 
-            <RightSide theme={theme} />
+            <RightSide/>
         </div>
         </UserContext.Provider>
         </ThemeContext.Provider>
