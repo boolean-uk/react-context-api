@@ -15,9 +15,7 @@ function App() {
 
     //set theme from local storage
     useEffect(() => {
-        if (localStorage.getItem("theme") === 'light') {
-          setTheme('light');
-        } else if (localStorage.getItem("theme") === 'dark') {
+        if (localStorage.getItem("theme") === 'dark') {
           setTheme('dark');
         }
       }, []);
