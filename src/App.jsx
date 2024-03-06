@@ -6,10 +6,11 @@ import defaultTweets from "./assets/data/tweets.js";
 import user from "./assets/data/user.js";
 
 const AppContext = createContext();
+const ThemeContext = createContext();
 
 function App() {
   const [tweets, setTweets] = useState(defaultTweets);
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
 
   useEffect(() => {
     theme === "light"
@@ -19,15 +20,17 @@ function App() {
 
   return (
     <div className="container">
-      <AppContext.Provider value={{ user, tweets, setTweets, theme, setTheme }}>
-        <Header />
-        <Tweets />
-        <RightSide />
-      </AppContext.Provider>
+      <ThemeContext.Provider value={{ theme, setTheme }}>
+        <AppContext.Provider value={{ user, tweets, setTweets }}>
+          <Header />
+          <Tweets />
+          <RightSide />
+        </AppContext.Provider>
+      </ThemeContext.Provider>
     </div>
   );
 }
 
 // NOTE! Instead of `export default App` we use `export { App }` here because we have
 // more than one thing to export from this file.
-export { App, AppContext };
+export { App, AppContext, ThemeContext };
