@@ -1,14 +1,15 @@
 import { useContext, useEffect } from "react";
-import { TwitterContext } from "../App";
+import { TwitterContext, ThemeContext } from "../App";
 
 export default function Header() {
-    const context = useContext(TwitterContext)
+    const twitterContext = useContext(TwitterContext)
+    const themeContext = useContext(ThemeContext)
     const handleCheckChange = () => {
-      if(context.theme === 'dark') {
-        context.setTheme('light');
+      if(themeContext.theme === 'dark') {
+        themeContext.setTheme('light');
         localStorage.setItem('theme', 'light');
       } else {
-        context.setTheme('dark');
+        themeContext.setTheme('dark');
         localStorage.setItem('theme', 'dark');
       }
       
@@ -16,21 +17,21 @@ export default function Header() {
 
     const handleButtonClick = () => {
       console.log("CLICK!");
-      localStorage.clear();
+      localStorage.removeItem('theme');
     }
 
     useEffect(() => {
         const storedTheme = localStorage.getItem('theme');
         if (storedTheme) {
-            context.setTheme(storedTheme);
+            themeContext.setTheme(storedTheme);
         }
     }, []);
 
     return (
-        <header className={context.theme}>
+        <header className={themeContext.theme}>
             <div>
                 <div className="dark-mode-container">
-                    <input id="darkMode" type="checkbox" checked={context.theme === 'dark'} onChange={handleCheckChange}></input>
+                    <input id="darkMode" type="checkbox" checked={themeContext.theme === 'dark'} onChange={handleCheckChange}></input>
                     <label htmlFor="darkMode">Enable Dark Mode</label>
                 </div>
                 <div>
@@ -106,12 +107,12 @@ export default function Header() {
 
             <button className="tweet-btn">Tweet</button>
 
-            <div className={context.theme === 'dark' ? 'profile-card dark' : 'profile-card'}>
-                <div className="profile-icon"><img src={context.user.profileImage}/></div>
+            <div className={themeContext.theme === 'dark' ? 'profile-card dark' : 'profile-card'}>
+                <div className="profile-icon"><img src={twitterContext.user.profileImage}/></div>
 
                 <div className="profile-details">
-                    <h4>{context.user.name}</h4>
-                    <small>{context.user.handle}</small>
+                    <h4>{twitterContext.user.name}</h4>
+                    <small>{twitterContext.user.handle}</small>
                 </div>
 
                 <div className="action">

@@ -1,10 +1,10 @@
 import { useContext } from "react";
-import { TwitterContext } from "../App";
+import { ThemeContext } from "../App";
 
 export default function Tweet({ tweet }) {
-    const context = useContext(TwitterContext)
+    const themeContext = useContext(ThemeContext)
     return (
-        <article className={context.theme === 'dark' ? 'tweet dark' : 'tweet'}>
+        <article className={themeContext.theme === 'dark' ? 'tweet dark' : 'tweet'}>
             <div className="profile-icon"><img src={tweet.profileImage}/></div>
 
             <div className="tweet-content">
