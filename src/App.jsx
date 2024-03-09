@@ -21,15 +21,17 @@ function App() {
     }, [theme])
 
     return (
-        <ThemeContext.Provider value = {theme}>
-            <DataContext.Provider value = {{ user: user, tweets: tweets, setTweets: setTweets }}>
-                <CreateTweet/>
+      <div className="container">
+        <ThemeContext.Provider value = {{ theme: theme, setTheme: setTheme }}>
+            <DataContext.Provider value = {{ user: user, tweets: tweets, setTweets: setTweets, setTheme: setTheme }}>
                 <Header/>
+                
                 <RightSide/>
-                <Tweet/>
+                
                 <Tweets/>
             </DataContext.Provider>
         </ThemeContext.Provider>
+      </div>
     )
 }
 

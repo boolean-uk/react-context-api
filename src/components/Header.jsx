@@ -6,10 +6,10 @@ export default function Header() {
     const themeContext = useContext(ThemeContext)
 
     const handleCheckChange = () => {
-      if(themeContext=== 'dark') {
-        setTheme('light');
+      if(themeContext.theme=== 'dark') {
+        themeContext.setTheme('light');
       } else {
-        setTheme('dark');
+        themeContext.setTheme('dark');
       }
     }
 
@@ -18,10 +18,10 @@ export default function Header() {
     }
 
     return (
-        <header className={themeContext}>
+        <header className={themeContext.theme}>
             <div>
                 <div className="dark-mode-container">
-                    <input id="darkMode" type="checkbox" checked={themeContext === 'dark'} onChange={handleCheckChange}></input>
+                    <input id="darkMode" type="checkbox" checked={themeContext.theme === 'dark'} onChange={handleCheckChange}></input>
                     <label htmlFor="darkMode">Enable Dark Mode</label>
                 </div>
                 <div>
@@ -95,9 +95,9 @@ export default function Header() {
                 </a>
             </div>
 
-            <button className="tweet-btn">Tweet</button>
+            
 
-            <div className={themeContext === 'dark' ? 'profile-card dark' : 'profile-card'}>
+            <div className={themeContext.theme === 'dark' ? 'profile-card dark' : 'profile-card'}>
                 <div className="profile-icon"><img src={dataContext.user.profileImage}/></div>
 
                 <div className="profile-details">

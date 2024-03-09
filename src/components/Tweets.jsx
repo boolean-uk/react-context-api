@@ -19,7 +19,7 @@ export default function Tweets() {
                 <p>Show 35 Tweets</p>
             </div>
 
-            {dataContext.tweets.map((tweet, index) => <Tweet tweet={tweet} key={index} />)}
+            {dataContext.tweets.map((tweet, index) => <Tweet tweet={tweet} key={index} />)} 
         </main>
     )
 }
