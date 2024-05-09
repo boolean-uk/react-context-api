@@ -1,9 +1,14 @@
-import { useState } from 'react'
+/*adding in the FormContext to import the context for the application */
+import { useContext, useState } from 'react'
 import imgDoge from '../assets/images/doge.jpg'
+/* importing FormContext */
+import { FormContext } from '../App'
 
-export default function CreateTweet({ tweets, setTweets, user, theme }) {
+export default function CreateTweet({ theme }) {
     const [content, setContent] = useState('')
-
+/* creating a new const variable for useContext moving the tweets, setTweets, user into here as state needs to be shared among multiple compnents*/
+    const { user, tweets, setTweets} = useContext(FormContext)
+    
     const addTweet = (e) => {
         e.preventDefault()
         setTweets([

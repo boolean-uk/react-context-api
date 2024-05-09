@@ -1,5 +1,13 @@
-export default function Header({ user, theme, setTheme }) {
-    const handleCheckChange = () => {
+import {useContext, useState} from 'react'
+import { FormContext } from '../App';
+
+
+export default function Header({ theme, setTheme }) {
+/* moved user property into const allowinf access to the user data within this functinal component 
+wihtout passing down through higher props from higher components */
+const { user } = useContext(FormContext)
+    
+const handleCheckChange = () => {
       if(theme === 'dark') {
         setTheme('light');
       } else {
