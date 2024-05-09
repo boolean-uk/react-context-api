@@ -21,9 +21,9 @@ function App() {
     return (
         <AppContext.Provider value={{tweets, setTweets, theme, setTheme, user}}>
             <div className="container">
-                <Header />
-                <Tweets  />
-                <RightSide />
+                <Header theme={theme} setTheme={setTheme}/>
+                <Tweets theme={theme} />
+                <RightSide theme={theme} />
             </div>
         </AppContext.Provider>
     )

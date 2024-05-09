@@ -3,8 +3,8 @@ import CreateTweet from './CreateTweet'
 import Tweet from './Tweet'
 import { AppContext } from '../App'
 
-export default function Tweets() {
-    const {tweets, theme} = useContext(AppContext)
+export default function Tweets({theme}) {
+    const {tweets} = useContext(AppContext)
 
   return (
         <main>
@@ -12,13 +12,13 @@ export default function Tweets() {
                 <h2 className="title">Home</h2>
             </div>
 
-            <CreateTweet />
+            <CreateTweet theme={theme}/>
 
             <div className="show-more-tweets">
                 <p>Show 35 Tweets</p>
             </div>
 
-            {tweets.map((tweet, index) => <Tweet tweet={tweet} theme={theme} key={index} />)}
+            {tweets.map((tweet, index) => <Tweet tweet={tweet}theme={theme} key={index} />)}
         </main>
     )
 }
