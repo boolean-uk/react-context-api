@@ -24,7 +24,7 @@ function App() {
             <TweetContext.Provider value={{tweets, setTweets, user}}>
                 <div className="container">
                     <Header />
-                    <Tweets theme={theme} />
+                    <Tweets />
                     <RightSide theme={theme} />
                 </div>
             </TweetContext.Provider>
