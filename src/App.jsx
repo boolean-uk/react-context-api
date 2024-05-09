@@ -23,7 +23,7 @@ function App() {
             <div className="container">
                 <Header />
                 <Tweets  />
-                <RightSide theme={theme} />
+                <RightSide />
             </div>
         </AppContext.Provider>
     )
