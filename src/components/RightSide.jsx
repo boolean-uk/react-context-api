@@ -1,7 +1,11 @@
 import imgElon from '../assets/images/elon.jpg'
 import imgZuck from '../assets/images/zuck.jpg'
+/* for App cohesion */
+import { FormContext } from '../App'
+import { useContext } from 'react'
 
 export default function RightSide({ theme }) {
+    const { theme } = useContext(FormContext)
     return (
         <aside>
             <div className={theme === 'dark' ? 'search-section dark' : 'search-section'}>
