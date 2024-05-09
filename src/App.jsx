@@ -24,7 +24,7 @@ function App() {
         /*wrapping components so that decendants can access the state (Theme) with in the <FormContect.prodvider> and settting the props "theme" for relvancy. 
         This avoids placing too much state being used.*/
 
-        <FormContext.Provider value={ { user, tweets, setTweets, theme, setTheme } }>
+        <FormContext.Provider value={ { user, tweets, setTweets } }>
             <div className="container">
                 
                 <Header theme={theme} setTheme={setTheme} />
