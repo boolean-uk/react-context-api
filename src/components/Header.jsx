@@ -3,7 +3,7 @@ import { FormContext } from '../App';
 
 
 export default function Header({ theme, setTheme }) {
-/* moved user property into const allowinf access to the user data within this functinal component 
+/* moved user property into const allowing access to the user data within this functinal component 
 wihtout passing down through higher props from higher components */
 const { user } = useContext(FormContext)
     

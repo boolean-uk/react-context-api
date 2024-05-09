@@ -4,7 +4,7 @@ import imgZuck from '../assets/images/zuck.jpg'
 import { FormContext } from '../App'
 import { useContext } from 'react'
 
-export default function RightSide({ theme }) {
+export default function RightSide() {
     const { theme } = useContext(FormContext)
     return (
         <aside>
