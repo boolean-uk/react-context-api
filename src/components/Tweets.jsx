@@ -1,8 +1,12 @@
+import { useContext } from 'react'
 import CreateTweet from './CreateTweet'
 import Tweet from './Tweet'
+import { DataContext } from '../App'
 
-export default function Tweets({ tweets, setTweets, user, theme }) {
-  return (
+export default function Tweets() {
+    const { tweets, setTweets, user, theme } = useContext(DataContext)
+
+    return (
         <main>
             <div className={theme === 'dark' ? 'top-bar dark' : 'top-bar'}>
                 <h2 className="title">Home</h2>
@@ -14,7 +18,7 @@ export default function Tweets({ tweets, setTweets, user, theme }) {
                 <p>Show 35 Tweets</p>
             </div>
 
-            {tweets.map((tweet, index) => <Tweet tweet={tweet} theme={theme} key={index} />)}
+            {tweets.map((tweet, index) => <Tweet tweet={tweet} key={index} />)}
         </main>
     )
 }
