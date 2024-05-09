@@ -5,7 +5,7 @@ import RightSide from './components/RightSide'
 import defaultTweets from './assets/data/tweets.js'
 import user from './assets/data/user.js'
 
-export const StateContext = createContext()
+const StateContext = createContext()
 
 function App() {
     const [tweets, setTweets] = useState(defaultTweets)
@@ -28,4 +28,4 @@ function App() {
     )
 }
 
-export { App };
+export { App, StateContext };
