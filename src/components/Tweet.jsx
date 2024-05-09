@@ -1,4 +1,10 @@
-export default function Tweet({ tweet, theme }) {
+/* importing providers so style can be applied */
+import { useContext } from 'react'
+import { FormContext } from "../App"
+
+export default function Tweet({ tweet }) {
+    /* extract theme value */
+    const { theme } = useContext(FormContext)
     return (
         <article className={theme === 'dark' ? 'tweet dark' : 'tweet'}>
             <div className="profile-icon"><img src={tweet.profileImage}/></div>
