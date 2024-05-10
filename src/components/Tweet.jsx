@@ -1,8 +1,8 @@
 import { useContext } from "react"
-import { DataContext } from "../App"
+import { ThemeContext } from "../App"
 
 export default function Tweet({ tweet }) {
-    const { theme } = useContext(DataContext)
+    const { theme } = useContext(ThemeContext)
 
     return (
         <article className={theme === 'dark' ? 'tweet dark' : 'tweet'}>
