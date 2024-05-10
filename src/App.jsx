@@ -9,8 +9,9 @@ export const DataContext = createContext()
 export const ThemeContext = createContext()
 
 function App() {
+    const loadedTheme = localStorage.getItem('theme')
     const [tweets, setTweets] = useState(defaultTweets)
-    const [theme, setTheme] = useState('light');
+    const [theme, setTheme] = useState(loadedTheme || 'light');
 
     const value = {
         tweets,

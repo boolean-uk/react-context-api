@@ -7,9 +7,11 @@ export default function Header() {
 
     const handleCheckChange = () => {
       if(theme === 'dark') {
-        setTheme('light');
+        setTheme('light')
+        localStorage.setItem('theme', 'light')
       } else {
-        setTheme('dark');
+        setTheme('dark')
+        localStorage.setItem('theme', 'dark')
       }
     }
 
