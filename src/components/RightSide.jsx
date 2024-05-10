@@ -1,10 +1,11 @@
 import { useContext } from "react";
-import { Data } from "../App";
+import { Theme } from "../App";
+
 import imgElon from "../assets/images/elon.jpg";
 import imgZuck from "../assets/images/zuck.jpg";
 
 export default function RightSide() {
-  const { theme } = useContext(Data);
+  const { theme } = useContext(Theme);
   return (
     <aside>
       <div

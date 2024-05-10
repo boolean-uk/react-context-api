@@ -4,12 +4,14 @@
 // theme={theme}
 import { useContext } from "react";
 import { Data } from "../App";
+import { Theme } from "../App";
 import { useState } from "react";
 import imgDoge from "../assets/images/doge.jpg";
 
 export default function CreateTweet() {
   const [content, setContent] = useState("");
-  const { tweets, setTweets, user, theme } = useContext(Data);
+  const { tweets, setTweets, user } = useContext(Data);
+  const { theme } = useContext(Theme);
 
   const addTweet = (e) => {
     e.preventDefault();
