@@ -8,8 +8,9 @@ import user from "./assets/data/user.js"
 export const MyContext = createContext()
 
 function App() {
+	const storedTheme = localStorage.getItem('theme')
 	const [tweets, setTweets] = useState(defaultTweets)
-	const [theme, setTheme] = useState("light")
+	const [theme, setTheme] = useState(storedTheme || "light")
 
 	useEffect(() => {
 		theme === "light"
@@ -18,7 +19,7 @@ function App() {
 	}, [theme])
 
 	return (
-		<MyContext.Provider value={{ tweets, setTweets, theme, setTheme }}>
+		<MyContext.Provider value={{ tweets, setTweets, theme, setTheme, storedTheme  }}>
 			<div className='container'>
 				<Header user={user} />
 				<Tweets user={user} />
