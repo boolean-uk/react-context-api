@@ -6,46 +6,44 @@ import RightSide from './components/RightSide'
 import defaultTweets from './assets/data/tweets.js'
 import user from './assets/data/user.js'
 
-/* creating new object so that data can be shared between compnents*/
-const FormContext = createContext()
+/* creating new object so that data can be shared between compnents
+Have also exported FormContext here*/
+const loadedTheme = localStorage.getItem('theme')
+export const ThemeCon =createContext(loadedTheme)
+export const FormContext = createContext()
+
 
 function App() {
     const [tweets, setTweets] = useState(defaultTweets)
-    const [theme, setTheme] = useState('light');
+    /* modified so that default browswer if light*/
+    const [theme, setTheme] = useState(loadedTheme || 'light')
 
-    useEffect(() => {
+
+   useEffect(() => {
         theme === 'light'
           ? document.body.style.backgroundColor = 'white'
           : document.body.style.backgroundColor = 'black'
-    }, [theme])
+    }, [theme]) 
 
     return (
 
-        /*wrapping components so that decendants can access the state (Theme) with in the <FormContect.prodvider> and settting the props "theme" for relvancy. 
-        This avoids placing too much state being used.*/
-
+     
+/* Removed theme from container objects and enclosed FormContent into new provider and moved props into the new provdier to avoid prop drilling*/
+    <ThemeCon.Provider value={{ theme, setTheme }}>
         <FormContext.Provider value={ { user, tweets, setTweets } }>
             <div className="container">
-                
-                <Header theme={theme} setTheme={setTheme} />
-                <Tweets  theme={theme} />
-                <RightSide  theme={theme} />
-
+                <Header/>
+                <Tweets/>
+                <RightSide/>
             </div>    
-
         </FormContext.Provider>
+    </ThemeCon.Provider>
         
-        /* 
-        <div className="container">
-            <Header user={user} theme={theme} setTheme={setTheme} />
-            <Tweets tweets={tweets} setTweets={setTweets} user={user} theme={theme}  />
-            <RightSide theme={theme} />
-        </div>*/
     )
 }
 
-/*exporting FormContext object */
-export { App, FormContext }
+
+export default App
 
 
 

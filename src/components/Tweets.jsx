@@ -1,12 +1,13 @@
 /*importing hooks from the Context.Provider */
 import { useContext } from 'react'
-import { FormContext } from '../App'
+import { FormContext, ThemeCon, } from '../App'
 import CreateTweet from './CreateTweet'
 import Tweet from './Tweet'
 
-
-export default function Tweets({ theme }) {
-    const { tweets } = useContext(FormContext)
+/* cleared the parameter change in dependancy, Added ThemeCon UseContext param*/
+export default function Tweets() {
+    const { tweets, setTweets, user} =useContext(FormContext)
+    const { theme } = useContext(ThemeCon)
   return (
         <main>
             <div className={theme === 'dark' ? 'top-bar dark' : 'top-bar'}>
