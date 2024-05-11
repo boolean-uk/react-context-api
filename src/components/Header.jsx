@@ -1,28 +1,23 @@
 import {useContext, useState} from 'react'
 import {FormContext, ThemeCon } from '../App';
 
-
 export default function Header() {
     const { theme, setTheme } = useContext(ThemeCon)
-
- /* added in localStorage so that the user can set theme to either light or dark with UI consistency */   
+  
 const handleCheckChange = () => {
       if (theme === 'dark') {
         localStorage.setItem ('theme')
-        setTheme('light');
+        setTheme('light')
       } else {
         localStorage.setItem ('theme')
-        setTheme('dark');
+        setTheme('dark')
       }
     }
-/* Removed console.log for cleaner code. added in LocalStorage to allow for default setting with LS is cleared/removed*/
+
     const handleButtonClick = () => {
       localStorage.removeItem( 'theme' )
       setTheme('light')
     }
-
-/* moved user property into const allowing access to the user data within this functinal component 
-wihtout passing down through higher props from higher components */
 const { user } = useContext(FormContext)
 
     return (
