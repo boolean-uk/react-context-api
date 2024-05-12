@@ -1,8 +1,10 @@
 import { useContext } from "react";
 import UserContext from "../context/UserContext";
+import ThemeContext from "../context/ThemeContext";
 
-export default function Header({ theme, setTheme }) {
+export default function Header({ setTheme }) {
     const user = useContext(UserContext)
+    const theme = useContext(ThemeContext)
 
     const handleCheckChange = () => {
       if(theme === 'dark') {
@@ -13,7 +15,8 @@ export default function Header({ theme, setTheme }) {
     }
 
     const handleButtonClick = () => {
-      console.log("CLICK!");
+        setTheme('light')
+        localStorage.clear()
     }
 
     return (
