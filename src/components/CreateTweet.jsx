@@ -1,24 +1,29 @@
 import { useState } from 'react'
 import imgDoge from '../assets/images/doge.jpg'
+import { useContext } from 'react';
+import AppContext from '../AppContext';
+import ThemeContext from '../ThemeContext.jsx';
 
-export default function CreateTweet({ tweets, setTweets, user, theme }) {
-    const [content, setContent] = useState('')
+export default function CreateTweet() {
+  const [content, setContent] = useState('');
+  const { tweets, setTweets, user } = useContext(AppContext);
+  const { theme } = useContext(ThemeContext);
 
-    const addTweet = (e) => {
-        e.preventDefault()
-        setTweets([
-            {
-                ...user,
-                date: '1m',
-                content,
-                commentCount: 0,
-                retweetCount: 0,
-                heartCount: 0,
-                analyticsCount: 0
-            },
-            ...tweets
-        ])
-    }
+  const addTweet = (e) => {
+    e.preventDefault();
+    setTweets([
+      {
+        ...user,
+        date: '1m',
+        content,
+        commentCount: 0,
+        retweetCount: 0,
+        heartCount: 0,
+        analyticsCount: 0,
+      },
+      ...tweets,
+    ]);
+  };
 
     return (
         <div className={theme === 'dark' ? 'create-tweet dark' : 'create-tweet'}>
