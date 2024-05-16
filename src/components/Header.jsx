@@ -1,23 +1,21 @@
 import { useContext } from 'react';
 import AppContext from '../AppContext';
-import { useContext } from 'react';
 import ThemeContext from '../ThemeContext.jsx';
 
-export default function Header({ user, theme, setTheme }) {
-    const handleCheckChange = () => {
-        const newTheme = theme === 'dark' ? 'light' : 'dark';
-        setTheme(newTheme);
-        localStorage.setItem('theme', newTheme);
-      };
-    
-    const { user, theme, setTheme } = useContext(AppContext);
-    
+export default function Header() {
+    const { user } = useContext(AppContext);
     const { theme, setTheme } = useContext(ThemeContext);
-
+  
+    const handleCheckChange = () => {
+      const newTheme = theme === 'dark' ? 'light' : 'dark';
+      setTheme(newTheme);
+      localStorage.setItem('theme', newTheme);
+    };
+  
     const handleButtonClick = () => {
-        localStorage.removeItem('theme');
-        setTheme('light');
-      };
+      localStorage.removeItem('theme');
+      setTheme('light');
+    };
 
     return (
         <header className={theme}>
