@@ -30,7 +30,6 @@ function App() {
         >
          <ThemeContext.Provider value={{
             theme: theme, setTheme: setTheme }}>   
-
        
            <div className="container">
             <Header/>
