@@ -1,16 +1,27 @@
-export default function Header({ user, theme, setTheme }) {
+import { useContext } from "react";
+import { ContextAPIContext, ThemeAPIContext } from "../context/ContextAPI";
+
+export default function Header() {
+
+    const { user } = useContext(ContextAPIContext)
+
+    const {theme, setTheme} = useContext(ThemeAPIContext);
     const handleCheckChange = () => {
       if(theme === 'dark') {
+        localStorage.setItem("theme", "light");
         setTheme('light');
       } else {
+        localStorage.setItem("theme", "dark");
         setTheme('dark');
       }
     }
 
     const handleButtonClick = () => {
-      console.log("CLICK!");
+      localStorage.setItem("theme", "")
+      setTheme("light")
     }
 
+    console.log(theme)
     return (
         <header className={theme}>
             <div>
