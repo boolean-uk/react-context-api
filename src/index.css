@@ -1,668 +1,672 @@
 * {
-    margin: 0;
-    font-family: sans-serif;
+  margin: 0;
+  font-family: sans-serif;
 }
 
 :root {
-    --black: #0f0f0f;
-    --white: #ffffff;
-    --grey: rgb(83, 100, 113);
-    --dark-grey: rgb(207, 217, 222);
-    --border: rgb(239, 243, 244);
-    --primary: rgb(29, 155, 240);
-    --transparent-primary: rgba(29, 155, 240, 0.1);
-    --primary-darker: rgb(26, 140, 216);
-    --primary-transparent: rgba(247, 249, 249);
-    --primary-transparent-more: rgba(15, 20, 25, 0.1);
-    --black-btn: rgb(15, 20, 25);
-    --black-btn-hover: rgb(39, 44, 48);
-    --side-padding: 10px;
-    overflow-x: hidden;
+  --black: #0f0f0f;
+  --white: #ffffff;
+  --grey: rgb(83, 100, 113);
+  --dark-grey: rgb(207, 217, 222);
+  --border: rgb(239, 243, 244);
+  --primary: rgb(29, 155, 240);
+  --transparent-primary: rgba(29, 155, 240, 0.1);
+  --primary-darker: rgb(26, 140, 216);
+  --primary-transparent: rgba(247, 249, 249);
+  --primary-transparent-more: rgba(15, 20, 25, 0.1);
+  --black-btn: rgb(15, 20, 25);
+  --black-btn-hover: rgb(39, 44, 48);
+  --side-padding: 10px;
+  overflow-x: hidden;
 }
 
 body {
-    color: var(--black);
-    min-width: 100vw;
-    min-height: 100vh;
-    display: grid;
-    place-items: center;
-    box-sizing: border-box;
+  color: var(--black);
+  min-width: 100vw;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  box-sizing: border-box;
 }
 
 .container {
-    min-height: 100vh;
-    display: grid;
-    grid-template-columns: 275px 600px 350px;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 275px 600px 350px;
 }
 
 a {
-    text-decoration: none;
-    color: var(--primary);
+  text-decoration: none;
+  color: var(--primary);
 }
 
 a:hover {
-    color: var(--primary-darker);
+  color: var(--primary-darker);
 }
 
 header {
-    padding: 10px 5px;
-    position: fixed;
-    height: 100vh;
+  padding: 10px 5px;
+  position: fixed;
+  height: 100vh;
 }
 
 .dark-mode-container {
-    display: grid;
-    grid-template-columns: 20px 1fr;
-    column-gap: 10px;
-    margin-bottom: 15px;
+  display: grid;
+  grid-template-columns: 20px 1fr;
+  column-gap: 10px;
+  margin-bottom: 15px;
 }
 
 .logo {
-    width: 50px;
-    height: 50px;
-    color: var(--primary);
-    font-size: 2rem;
-    border-radius: 50%;
-    cursor: pointer;
-    line-height: 1.6;
-    padding: 5px;
-    text-align: center;
+  width: 50px;
+  height: 50px;
+  color: var(--primary);
+  font-size: 2rem;
+  border-radius: 50%;
+  cursor: pointer;
+  line-height: 1.6;
+  padding: 5px;
+  text-align: center;
 }
 
 .logo:hover {
-    background-color: var(--primary-transparent-more);
+  background-color: var(--primary-transparent-more);
 }
 
 .menu-item {
-    display: block;
-    font-weight: 200;
-    font-size: 1.4rem;
-    margin: 4px;
+  display: block;
+  font-weight: 200;
+  font-size: 1.4rem;
+  margin: 4px;
 }
 
 .menu-item i {
-    width: 28px;
-    margin-right: 20px;
+  width: 28px;
+  margin-right: 20px;
 }
 
 .menu-item a {
-    padding: 15px 30px 15px 15px;
-    background-color: var(--white);
-    color: var(--black);
-    text-decoration: none;
-    border-radius: 100px;
-    display: inline-flex;
-    place-items: center;
-    transition: 100ms;
+  padding: 15px 30px 15px 15px;
+  background-color: var(--white);
+  color: var(--black);
+  text-decoration: none;
+  border-radius: 100px;
+  display: inline-flex;
+  place-items: center;
+  transition: 100ms;
 }
 
-header.dark .menu-item a  {
-    background-color: var(--black);
-    color: var(--white);
+header.dark .menu-item a {
+  background-color: var(--black);
+  color: var(--white);
 }
 
 header.dark label {
-    color: var(--white);
+  color: var(--white);
 }
 
 .menu-item a:hover {
-    background-color: var(--primary-transparent-more);
+  background-color: var(--primary-transparent-more);
 }
 
 header.dark .menu-item a:hover {
-    background-color: var(--primary-darker);
+  background-color: var(--primary-darker);
 }
 
 .menu-item.active a {
-    font-weight: 600;
+  font-weight: 600;
 }
 
 button:disabled {
-    cursor: default;
+  cursor: default;
 }
 
 button {
-    text-align: center;
-    border: none;
-    cursor: pointer;
+  text-align: center;
+  border: none;
+  cursor: pointer;
 }
 
 header .tweet-btn {
-    width: 240px;
+  width: 240px;
 }
 
 main {
-    max-width: 600px;
-    border-left: solid 1px var(--border);
-    border-right: solid 1px var(--border);
-    position: absolute;
-    margin-left: 275px;
+  max-width: 600px;
+  border-left: solid 1px var(--border);
+  border-right: solid 1px var(--border);
+  position: absolute;
+  margin-left: 275px;
 }
 
 .top-bar {
-    display: grid;
-    grid-template-columns: 1fr 20px;
-    padding: 3px var(--side-padding);
-    border-bottom: solid 1px var(--border);
-    position: fixed;
-    width: 574px;
-    top: 0;
-    backdrop-filter: blur(10px);
-    z-index: 999;
+  display: grid;
+  grid-template-columns: 1fr 20px;
+  padding: 3px var(--side-padding);
+  border-bottom: solid 1px var(--border);
+  position: fixed;
+  width: 574px;
+  top: 0;
+  backdrop-filter: blur(10px);
+  z-index: 999;
 }
 
 .top-bar.dark {
-    color: white;
+  color: white;
 }
 
 .top-bar .icon {
-    cursor: pointer;
-    justify-self: center;
-    align-self: center;
-    width: 25px;
-    fill: var(--primary);
+  cursor: pointer;
+  justify-self: center;
+  align-self: center;
+  width: 25px;
+  fill: var(--primary);
 }
 
 .top-bar .icon:hover {
-    background-color: var(--primary-transparent);
-    padding: 3px;
-    border-radius: 50%;
+  background-color: var(--primary-transparent);
+  padding: 3px;
+  border-radius: 50%;
 }
 
 .top-bar .title {
-    font-size: 1.3rem;
-    font-weight: 700;
-    padding: 10px;
+  font-size: 1.3rem;
+  font-weight: 700;
+  padding: 10px;
 }
 
 .create-tweet {
-    padding: 12px var(--side-padding);
-    padding-bottom: 0;
-    border-bottom: solid 1px var(--border);
-    margin-top: 50px;
+  padding: 12px var(--side-padding);
+  padding-bottom: 0;
+  border-bottom: solid 1px var(--border);
+  margin-top: 50px;
 }
 
 .create-tweet form {
-    display: grid;
-    column-gap: 5px;
-    grid-template-columns: 50px 1fr;
+  display: grid;
+  column-gap: 5px;
+  grid-template-columns: 50px 1fr;
 }
 
 .create-tweet .avatar-section {
-    padding: 3px;
+  padding: 3px;
 }
 
 .create-tweet .actions-section {
-    display: grid;
-    width: 100%;
-    grid-template-columns: 1fr 100px;
-    margin-bottom: 10px;
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr 100px;
+  margin-bottom: 10px;
 }
 
 .actions-section .actions {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr) 100px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr) 100px;
 }
 
 .create-tweet .avatar {
-    width: 50px;
-    border-radius: 50%;
+  width: 50px;
+  border-radius: 50%;
 }
 
 .create-tweet .textarea-section {
-    margin-right: 12px;
-    margin-bottom: 12px;
+  margin-right: 12px;
+  margin-bottom: 12px;
 }
 
 .create-tweet .content {
-    width: 100%;
-    font-size: 1.4rem;
-    line-height: 1.7;
-    padding: 5px;
-    border: none;
-    resize: none;
+  width: 100%;
+  font-size: 1.4rem;
+  line-height: 1.7;
+  padding: 5px;
+  border: none;
+  resize: none;
 }
 
 .create-tweet.dark .content {
-    background-color: var(--grey);
-    color: var(--white);
+  background-color: var(--grey);
+  color: var(--white);
 }
 
 .create-tweet .content:focus {
-    outline: none;
+  outline: none;
 }
 
 .create-tweet .actions-section {
-    display: grid;
-    justify-items: start;
-    align-items: center;
+  display: grid;
+  justify-items: start;
+  align-items: center;
 }
 
 .create-tweet .actions {
-    text-align: center;
+  text-align: center;
 }
 
 .create-tweet .actions-section .action-icon {
-    cursor: pointer;
-    width: 25px;
-    height: 25px;
-    color: var(--primary);
-    padding: 5px;
-    line-height: 1.5;
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+  color: var(--primary);
+  padding: 5px;
+  line-height: 1.5;
 }
 
 .create-tweet .actions-section .action-icon:hover {
-    background-color: var(--transparent-primary);
-    border-radius: 50%;
+  background-color: var(--transparent-primary);
+  border-radius: 50%;
 }
 
 .show-more-tweets {
-    border-bottom: solid 1px var(--border);
-    text-align: center;
-    padding: 20px 0;
-    color: var(--primary);
-    transition: 300ms;
+  border-bottom: solid 1px var(--border);
+  text-align: center;
+  padding: 20px 0;
+  color: var(--primary);
+  transition: 300ms;
 }
 
-.show-more-tweets:hover, .tweet:hover {
-    cursor: pointer;
-    background-color: var(--primary-transparent);
-    transition: 300ms;
+.show-more-tweets:hover,
+.tweet:hover {
+  cursor: pointer;
+  background-color: var(--primary-transparent);
+  transition: 300ms;
 }
 
-.show-more-tweets:hover, .tweet.dark:hover {
-    cursor: pointer;
-    background-color: var(--primary-darker);
-    color: var(--white);
-    transition: 300ms;
+.show-more-tweets:hover,
+.tweet.dark:hover {
+  cursor: pointer;
+  background-color: var(--primary-darker);
+  color: var(--white);
+  transition: 300ms;
 }
 
 .tweet {
-    display: grid;
-    grid-template-columns: 52px 1fr;
-    border-bottom: solid 1px var(--border);
-    padding: 15px;
-    transition: 300ms;
+  display: grid;
+  grid-template-columns: 52px 1fr;
+  border-bottom: solid 1px var(--border);
+  padding: 15px;
+  transition: 300ms;
 }
 
 .tweet.dark {
-    color: var(--white);
+  color: var(--white);
 }
 
 .tweet img {
-    max-width: 510px;
+  max-width: 510px;
 }
 
 .tweet-img img {
-    border-radius: 20px;
-    max-height: 510px;
+  border-radius: 20px;
+  max-height: 510px;
 }
 
 .tweet-content {
-    line-height: 1.3;
+  line-height: 1.3;
 }
 
 .tweet-content .tweet-actions {
-    display: grid;
-    grid-template-columns: repeat(5, 80px);
-    font-size: 1.2rem;
-    padding: 10px 0 0;
-    color: var(--grey);
+  display: grid;
+  grid-template-columns: repeat(5, 80px);
+  font-size: 1.2rem;
+  padding: 10px 0 0;
+  color: var(--grey);
 }
 
 .tweet-content span {
-    color: var(--grey);
-    font-weight: 100;
+  color: var(--grey);
+  font-weight: 100;
 }
 
 .tweet-content span small {
-    color: var(--grey);
-    font-weight: 100;
-    font-size: .9rem;
-    padding-left: 4px;
+  color: var(--grey);
+  font-weight: 100;
+  font-size: 0.9rem;
+  padding-left: 4px;
 }
 
 .tweet-content p {
-    padding: 3px 0 8px;
+  padding: 3px 0 8px;
 }
 
 .tweet-article {
-    width: 510px;
-    border: solid 1px var(--dark-grey);
-    border-radius: 20px;
+  width: 510px;
+  border: solid 1px var(--dark-grey);
+  border-radius: 20px;
 }
 
 .tweet-article p {
-    padding: 0 15px 10px 15px;
-    color: var(--grey);
+  padding: 0 15px 10px 15px;
+  color: var(--grey);
 }
 
 .tweet-article small {
-    padding: 0 15px;
-    font-size: 1rem;
-    color: var(--grey);
+  padding: 0 15px;
+  font-size: 1rem;
+  color: var(--grey);
 }
 
 .tweet-article h5 {
-    font-size: 1rem;
-    font-weight: 100;
-    color: var(--black-btn);
-    padding: 2px 15px;
+  font-size: 1rem;
+  font-weight: 100;
+  color: var(--black-btn);
+  padding: 2px 15px;
 }
 
 .tweet-article img {
-    height: 268px;
-    object-fit: cover;
-    width: 100%;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
+  height: 268px;
+  object-fit: cover;
+  width: 100%;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
 }
 
 button:disabled {
-    opacity: 0.5;
+  opacity: 0.5;
 }
 
 .tweet-btn {
-    padding: 15px 0;
-    border-radius: 100px;
-    background-color: var(--primary);
-    width: 93%;
-    font-weight: 800;
-    font-size: 1.2rem;
-    color: var(--white);
-    transition: 300ms;
+  padding: 15px 0;
+  border-radius: 100px;
+  background-color: var(--primary);
+  width: 93%;
+  font-weight: 800;
+  font-size: 1.2rem;
+  color: var(--white);
+  transition: 300ms;
 }
 
 .tweet-btn:hover {
-    background-color: var(--primary-darker);
+  background-color: var(--primary-darker);
 }
 
 header.dark .tweet-btn:hover {
-    background-color: var(--primary-transparent);
-    color: var(--primary-darker);
+  background-color: var(--primary-transparent);
+  color: var(--primary-darker);
 }
 
 .tweet-btn:disabled:hover {
-    background-color: var(--primary);
+  background-color: var(--primary);
 }
 
 .verify-btn {
-    background-color: var(--black-btn);
-    color: white;
-    max-width: 110px;
-    padding: 10px;
-    font-size: .9rem;
-    font-weight: 600;
-    border-radius: 30px;
-    margin-left: 18px;
-    transition: 200ms;
+  background-color: var(--black-btn);
+  color: white;
+  max-width: 110px;
+  padding: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: 30px;
+  margin-left: 18px;
+  transition: 200ms;
 }
 
 .verify-btn:hover {
-    background-color: var(--black-btn-hover);
-    transition: 200ms;
+  background-color: var(--black-btn-hover);
+  transition: 200ms;
 }
 
 .dark .verify-btn:hover {
-    background-color: var(--primary-darker);
-    transition: 200ms;
+  background-color: var(--primary-darker);
+  transition: 200ms;
 }
 
 .follow-btn,
 .clear-settings-btn {
-    background-color: var(--black-btn);
-    color: white;
-    padding: 7px 15px;
-    font-size: .8rem;
-    font-weight: 700;
-    border-radius: 30px;
-    transition: 200ms;
+  background-color: var(--black-btn);
+  color: white;
+  padding: 7px 15px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  border-radius: 30px;
+  transition: 200ms;
 }
 
 .follow-btn:hover,
 .clear-settings-btn:hover {
-    background-color: var(--black-btn-hover);
+  background-color: var(--black-btn-hover);
 }
 
 .dark .follow-btn:hover,
 .dark .clear-settings-btn:hover {
-    background-color: var(--primary-darker);
+  background-color: var(--primary-darker);
 }
 
 .news-block {
-    display: grid;
-    grid-template-columns: 1fr 20px;
-    padding: 10px 20px;
+  display: grid;
+  grid-template-columns: 1fr 20px;
+  padding: 10px 20px;
 }
 
 .news-block .content h4 {
-    font-size: .9rem;
-    color: var(--black-btn);
-    padding: 2px 0;
+  font-size: 0.9rem;
+  color: var(--black-btn);
+  padding: 2px 0;
 }
 
 .news-block .content small {
-    color: var(--grey);
-    font-size: .75rem;
+  color: var(--grey);
+  font-size: 0.75rem;
 }
 
 .news-block .action {
-    color: var(--grey);
-    border-radius: 50%;
-    height: 22px;
-    width: 22px;
-    text-align: center;
-    line-height: 1.5;
+  color: var(--grey);
+  border-radius: 50%;
+  height: 22px;
+  width: 22px;
+  text-align: center;
+  line-height: 1.5;
 }
 
 .news-block .action:hover {
-    background-color: var(--transparent-primary);
+  background-color: var(--transparent-primary);
 }
 
 .follow-block {
-    display: grid;
-    grid-template-columns: 40px 1fr 78px;
-    grid-template-rows: 40px;
-    padding: 15px 20px;
+  display: grid;
+  grid-template-columns: 40px 1fr 78px;
+  grid-template-rows: 40px;
+  padding: 15px 20px;
 }
 
-.news-block, .follow-block {
-    row-gap: 0;
-    column-gap: 5px;
-    align-items: center;
+.news-block,
+.follow-block {
+  row-gap: 0;
+  column-gap: 5px;
+  align-items: center;
 }
 
-.follow-block:hover, .news-block:hover {
-    background-color: rgba(0,0,0,0.03);
-    cursor: pointer;
+.follow-block:hover,
+.news-block:hover {
+  background-color: rgba(0, 0, 0, 0.03);
+  cursor: pointer;
 }
 
-.dark .follow-block:hover, .dark .news-block:hover {
-    background-color: var(--primary-transparent-more);
+.dark .follow-block:hover,
+.dark .news-block:hover {
+  background-color: var(--primary-transparent-more);
 }
 
 .follow-block .icon {
-    height: 35px;
-    width: 35px;
-    border-radius: 50%;
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
 }
 
 .follow-block .icon img {
-    height: 35px;
-    width: 35px;
-    border-radius: 50%;
-    object-fit: cover;
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .follow-block .action {
-    text-align: right;
+  text-align: right;
 }
 
 .profile-icon {
-    height: 40px;
-    width: 40px;
-    border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
 }
 
 .profile-icon img {
-    height: 40px;
-    width: 40px;
-    border-radius: 50%;
-    object-fit: cover;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .follow-block .content h4 {
-    font-size: 0.9rem;
+  font-size: 0.9rem;
 }
 
 .follow-block .content h4:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 .infollowfo-block .content h5 {
-    font-weight: 100;
+  font-weight: 100;
 }
 
 .create-tweet .tweet-btn {
-    padding: 10px 20px;
-    border-radius: 100px;
-    background-color: var(--primary);
-    font-size: 1rem;
-    font-weight: 800;
-    color: var(--white);
-    transition: 100ms;
+  padding: 10px 20px;
+  border-radius: 100px;
+  background-color: var(--primary);
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--white);
+  transition: 100ms;
 }
 
 .create-tweet .tweet-btn:hover {
-    background-color: var(--primary-darker);
+  background-color: var(--primary-darker);
 }
 
 .create-tweet.dark .tweet-btn:hover {
-    background-color: var(--primary-transparent);
-    color: var(--primary-darker);
+  background-color: var(--primary-transparent);
+  color: var(--primary-darker);
 }
 
 .create-tweet .tweet-btn:disabled:hover,
-.create-tweet.dark .tweet-btn:disabled:hover
-{
-    background-color: var(--grey);
-    color: var(--white);
+.create-tweet.dark .tweet-btn:disabled:hover {
+  background-color: var(--grey);
+  color: var(--white);
 }
 
 .space {
-    height: 10px;
-    background-color: var(--primary-transparent);
+  height: 10px;
+  background-color: var(--primary-transparent);
 }
 
 aside {
-    padding: 5px 0 0 25px;
-    position: fixed;
-    margin-left: 880px;
-    width: 358px;
+  padding: 5px 0 0 25px;
+  position: fixed;
+  margin-left: 880px;
+  width: 358px;
 }
 
 .search-section {
-    padding: 12px 12px 12px 22px;
-    background-color: var(--primary-transparent);
-    border-radius: 30px;
-    display: grid;
-    grid-template-columns: 30px 1fr;
+  padding: 12px 12px 12px 22px;
+  background-color: var(--primary-transparent);
+  border-radius: 30px;
+  display: grid;
+  grid-template-columns: 30px 1fr;
 }
 
 .search-section.dark {
-    background-color: var(--grey);
+  background-color: var(--grey);
 }
 
 .search-section .search-icon {
-    width: 20px;
-    color: rgb(83, 100, 113);
+  width: 20px;
+  color: rgb(83, 100, 113);
 }
 
 .search-section.dark .search-icon {
-    color: var(--primary);
+  color: var(--primary);
 }
 
 .search-section .search {
-    border: none;
-    background-color: transparent;
-    font-size: 1rem;
+  border: none;
+  background-color: transparent;
+  font-size: 1rem;
 }
 
 .search-section.dark .search {
-    color: var(--white);
+  color: var(--white);
 }
 
 .search-section .search:focus {
-    outline: none;
+  outline: none;
 }
 
 aside .widget {
-    background-color: var(--primary-transparent);
-    margin: 13px 0;
-    padding: 12px 0 15px;
-    border-radius: 20px;
+  background-color: var(--primary-transparent);
+  margin: 13px 0;
+  padding: 12px 0 15px;
+  border-radius: 20px;
 }
 
 aside .widget.dark {
-    background-color: var(--grey);
-    color: var(--white);
+  background-color: var(--grey);
+  color: var(--white);
 }
 
-aside .widget.dark small{
-    color: var(--primary-transparent);
+aside .widget.dark small {
+  color: var(--primary-transparent);
 }
 
 aside .widget .widget-grid {
-    display: grid;
-    row-gap: 10px;
+  display: grid;
+  row-gap: 10px;
 }
 
 aside .widget h1 {
-    font-size: 1.2rem;
-    padding-left: 18px;
-    font-weight: 700;
-    border-bottom: solid 1px var(--primary-transparent);
+  font-size: 1.2rem;
+  padding-left: 18px;
+  font-weight: 700;
+  border-bottom: solid 1px var(--primary-transparent);
 }
 
 aside h3 {
-    font-size: .9rem;
-    padding-left: 18px;
+  font-size: 0.9rem;
+  padding-left: 18px;
 }
 
 .profile-card {
-    position: fixed;
-    bottom: 0;
-    display: grid;
-    grid-template-columns: 40px 1fr 40px;
-    width: 230px;
-    gap: 10px;
-    padding: 10px;
-    margin-bottom: 20px;
-    line-height: 1.3;
-    transition: 300ms;
-    border-radius: 30px;
+  position: fixed;
+  bottom: 0;
+  display: grid;
+  grid-template-columns: 40px 1fr 40px;
+  width: 230px;
+  gap: 10px;
+  padding: 10px;
+  margin-bottom: 20px;
+  line-height: 1.3;
+  transition: 300ms;
+  border-radius: 30px;
 }
 
 .profile-card.dark {
-    color: var(--white);
+  color: var(--white);
 }
 
 .profile-card:hover {
-    cursor: pointer;
-    background-color: var(--primary-transparent-more);
-    transition: 300ms;
+  cursor: pointer;
+  background-color: var(--primary-transparent-more);
+  transition: 300ms;
 }
 
 .profile-card.dark:hover {
-    background-color: var(--primary-darker);
+  background-color: var(--primary-darker);
 }
 
 .profile-card small {
-    font-size: 1rem;
+  font-size: 1rem;
 }
 
 .profile-card .action {
-    text-align: right;
-    padding-top: 10px;
-    padding-right: 10px;
+  text-align: right;
+  padding-top: 10px;
+  padding-right: 10px;
 }
