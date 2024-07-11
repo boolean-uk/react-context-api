@@ -1,3 +1,4 @@
+/* src/index.css */
 * {
     margin: 0;
     font-family: sans-serif;
@@ -273,7 +274,7 @@ main {
 .show-more-tweets:hover, .tweet.dark:hover {
     cursor: pointer;
     background-color: var(--primary-darker);
-    color: var(--white);
+    color: var (--white);
     transition: 300ms;
 }
 

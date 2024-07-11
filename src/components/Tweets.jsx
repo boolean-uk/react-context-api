@@ -1,20 +1,17 @@
-import CreateTweet from './CreateTweet'
-import Tweet from './Tweet'
+import React, { useContext } from 'react';
+import { UserTweetsContext } from '../contexts/UserTweetsContext';
+import Tweet from './Tweet';
 
-export default function Tweets({ tweets, setTweets, user, theme }) {
+function Tweets() {
+  const { tweets } = useContext(UserTweetsContext);
+
   return (
-        <main>
-            <div className={theme === 'dark' ? 'top-bar dark' : 'top-bar'}>
-                <h2 className="title">Home</h2>
-            </div>
-
-            <CreateTweet tweets={tweets} setTweets={setTweets} user={user} theme={theme} />
-
-            <div className="show-more-tweets">
-                <p>Show 35 Tweets</p>
-            </div>
-
-            {tweets.map((tweet, index) => <Tweet tweet={tweet} theme={theme} key={index} />)}
-        </main>
-    )
+    <div>
+      {tweets.map((tweet, index) => (
+        <Tweet key={index} tweet={tweet} />
+      ))}
+    </div>
+  );
 }
+
+export default Tweets;

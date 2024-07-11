@@ -1,27 +1,30 @@
-import { useEffect, useState } from 'react'
-import Header from './components/Header'
-import Tweets from './components/Tweets'
-import RightSide from './components/RightSide'
-import defaultTweets from './assets/data/tweets.js'
-import user from './assets/data/user.js'
+// src/App.jsx
+import React from 'react';
+import { UserTweetsProvider } from './contexts/UserTweetsContext';
+import { ThemeProvider } from './contexts/ThemeContext';
+import Header from './components/Header';
+import Tweets from './components/Tweets';
+import CreateTweet from './components/CreateTweet';
+import RightSide from './components/RightSide'; 
 
 function App() {
-    const [tweets, setTweets] = useState(defaultTweets)
-    const [theme, setTheme] = useState('light');
-
-    useEffect(() => {
-        theme === 'light'
-          ? document.body.style.backgroundColor = 'white'
-          : document.body.style.backgroundColor = 'black'
-    }, [theme])
-
-    return (
+  return (
+    <UserTweetsProvider>
+      <ThemeProvider>
         <div className="container">
-            <Header user={user} theme={theme} setTheme={setTheme} />
-            <Tweets tweets={tweets} setTweets={setTweets} user={user} theme={theme}  />
-            <RightSide theme={theme} />
+          <Header />
+          <main>
+            <div className="top-bar">
+              <h2 className="title">Home</h2>
+            </div>
+            <CreateTweet />
+            <Tweets />
+          </main>
+          <RightSide />
         </div>
-    )
+      </ThemeProvider>
+    </UserTweetsProvider>
+  );
 }
 
-export { App };
+export default App;
