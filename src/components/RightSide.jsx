@@ -1,15 +1,19 @@
 import imgElon from '../assets/images/elon.jpg'
 import imgZuck from '../assets/images/zuck.jpg'
+import { useContext } from "react";
+import {MyContext, ThemeContext} from "../App";
 
-export default function RightSide({ theme }) {
+export default function RightSide() {
+    const context = useContext(MyContext, ThemeContext)
+
     return (
         <aside>
-            <div className={theme === 'dark' ? 'search-section dark' : 'search-section'}>
+            <div className={context.theme === 'dark' ? 'search-section dark' : 'search-section'}>
                 <i className="fa-solid fa-magnifying-glass search-icon"></i>
                 <input className="search" type="text" placeholder="Search Twitter" />
             </div>
 
-            <div className={theme === 'dark' ? 'widget dark' : 'widget'}>
+            <div className={context.theme === 'dark' ? 'widget dark' : 'widget'}>
                 <div className="widget-grid">
                     <h1>Get Verified</h1>
                     <h3>Subscribe to unlock nothing.</h3>
@@ -18,7 +22,7 @@ export default function RightSide({ theme }) {
                 </div>
             </div>
 
-            <div className={theme === 'dark' ? 'widget dark' : 'widget'}>
+            <div className={context.theme === 'dark' ? 'widget dark' : 'widget'}>
                 <h1>What's happening</h1>
 
                 <div className="news-block">
@@ -45,7 +49,7 @@ export default function RightSide({ theme }) {
                     </div>
                 </div>
             </div>
-            <div className={theme === 'dark' ? 'widget dark' : 'widget'}>
+            <div className={context.theme === 'dark' ? 'widget dark' : 'widget'}>
                 <h1>Who to follow</h1>
 
                 <div className="follow-block">
