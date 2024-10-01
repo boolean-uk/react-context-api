@@ -1,14 +1,19 @@
-export default function Header({ user, theme, setTheme }) {
+import { useContext } from "react";
+import { TwitterContext } from "../App";
+
+export default function Header() {
+    const { user, theme, setTheme } = useContext(TwitterContext)
     const handleCheckChange = () => {
-      if(theme === 'dark') {
-        setTheme('light');
-      } else {
-        setTheme('dark');
-      }
+        setTheme((prevTheme) => {
+            const newTheme = prevTheme === 'light' ? 'dark' : 'light'
+            localStorage.setItem("theme", newTheme)
+            return newTheme
+        })
     }
 
     const handleButtonClick = () => {
-      console.log("CLICK!");
+        localStorage.removeItem("theme")
+        setTheme('light')
     }
 
     return (
