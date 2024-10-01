@@ -1,21 +1,27 @@
-export default function Header({ user, theme, setTheme }) {
+import { useContext, useState } from "react";
+import { ThemeContext, UserContext } from "../App"
+
+export default function Header() {
+    const themeContext = useContext(ThemeContext)
+    const updateTheme = themeContext.updateTheme
+    const theme = localStorage.getItem("theme")
+
+    const userContext = useContext(UserContext)
+    const user = userContext.user
+
     const handleCheckChange = () => {
-      if(theme === 'dark') {
-        setTheme('light');
-      } else {
-        setTheme('dark');
-      }
+        updateTheme()
     }
 
     const handleButtonClick = () => {
-      console.log("CLICK!");
+        localStorage.removeItem("theme")
     }
 
     return (
         <header className={theme}>
             <div>
                 <div className="dark-mode-container">
-                    <input id="darkMode" type="checkbox" checked={theme === 'dark'} onChange={handleCheckChange}></input>
+                    <input id="darkMode" type="checkbox" checked={theme === "dark"} onChange={handleCheckChange}></input>
                     <label htmlFor="darkMode">Enable Dark Mode</label>
                 </div>
                 <div>
@@ -91,7 +97,7 @@ export default function Header({ user, theme, setTheme }) {
 
             <button className="tweet-btn">Tweet</button>
 
-            <div className={theme === 'dark' ? 'profile-card dark' : 'profile-card'}>
+            <div className={theme === "dark" ? 'profile-card dark' : 'profile-card'}>
                 <div className="profile-icon"><img src={user.profileImage}/></div>
 
                 <div className="profile-details">

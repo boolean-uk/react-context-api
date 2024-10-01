@@ -1,6 +1,9 @@
-export default function Tweet({ tweet, theme }) {
+export default function Tweet({ tweet }) {    
+
+    const theme = localStorage.getItem("theme")
+
     return (
-        <article className={theme === 'dark' ? 'tweet dark' : 'tweet'}>
+        <article className={theme === "dark" ? 'tweet dark' : 'tweet'}>
             <div className="profile-icon"><img src={tweet.profileImage}/></div>
 
             <div className="tweet-content">
