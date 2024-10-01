@@ -4,6 +4,10 @@ import Tweets from './components/Tweets'
 import RightSide from './components/RightSide'
 import defaultTweets from './assets/data/tweets.js'
 import user from './assets/data/user.js'
+import { createContext } from 'react'
+
+const NoContext=createContext()
+const ConTheme=createContext()
 
 function App() {
     const [tweets, setTweets] = useState(defaultTweets)
@@ -17,11 +21,18 @@ function App() {
 
     return (
         <div className="container">
-            <Header user={user} theme={theme} setTheme={setTheme} />
-            <Tweets tweets={tweets} setTweets={setTweets} user={user} theme={theme}  />
-            <RightSide theme={theme} />
+            
+            <NoContext.Provider value={{tweets, setTweets, user}}>
+                <ConTheme.Provider value={{theme, setTheme}}>
+                    <Header />
+                    <Tweets  />
+                    <RightSide />
+                </ConTheme.Provider>
+            </NoContext.Provider>
+            
+            
         </div>
     )
 }
 
-export { App };
+export { ConTheme, NoContext, App };

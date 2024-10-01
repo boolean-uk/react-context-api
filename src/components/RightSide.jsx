@@ -1,7 +1,14 @@
 import imgElon from '../assets/images/elon.jpg'
 import imgZuck from '../assets/images/zuck.jpg'
+import { NoContext } from "../App";
+import { useContext } from "react";
+import {ConTheme} from "../App";
 
-export default function RightSide({ theme }) {
+export default function RightSide({ }) {
+    const themes=useContext(ConTheme)
+
+    const{theme}=themes
+
     return (
         <aside>
             <div className={theme === 'dark' ? 'search-section dark' : 'search-section'}>
