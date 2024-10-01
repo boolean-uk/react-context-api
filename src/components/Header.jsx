@@ -1,14 +1,40 @@
-export default function Header({ user, theme, setTheme }) {
+import { useContext, useEffect } from "react";
+import { Context, ThemeContext } from "../App";
+
+export default function Header() {
+    const context = useContext(Context)
+    const themeContext = useContext(ThemeContext)
+
+    const { theme, setTheme } = themeContext
+
+    useEffect(() => {
+        const savedTheme = localStorage.getItem("theme")
+        if (savedTheme === null) {
+            setTheme('light')
+        } else {
+            if (savedTheme === "dark") {
+                setTheme('dark');
+                localStorage.setItem("theme", "dark")
+            } else {
+                setTheme('light');
+                localStorage.setItem("theme", "light")
+            }
+        }
+    })
+
     const handleCheckChange = () => {
-      if(theme === 'dark') {
-        setTheme('light');
-      } else {
-        setTheme('dark');
-      }
+        if (theme === 'dark') {
+            setTheme('light');
+            localStorage.setItem("theme", "light")
+        } else {
+            setTheme('dark');
+            localStorage.setItem("theme", "dark")
+        }
     }
 
     const handleButtonClick = () => {
-      console.log("CLICK!");
+        localStorage.clear()
+        setTheme('light')
     }
 
     return (
@@ -92,11 +118,11 @@ export default function Header({ user, theme, setTheme }) {
             <button className="tweet-btn">Tweet</button>
 
             <div className={theme === 'dark' ? 'profile-card dark' : 'profile-card'}>
-                <div className="profile-icon"><img src={user.profileImage}/></div>
+                <div className="profile-icon"><img src={context.user.profileImage} /></div>
 
                 <div className="profile-details">
-                    <h4>{user.name}</h4>
-                    <small>{user.handle}</small>
+                    <h4>{context.user.name}</h4>
+                    <small>{context.user.handle}</small>
                 </div>
 
                 <div className="action">
