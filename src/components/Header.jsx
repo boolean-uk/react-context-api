@@ -1,21 +1,29 @@
-export default function Header({ user, theme, setTheme }) {
+import { useContext } from "react";
+import { TwitterContext } from "../App";
+
+export default function Header() {
+
+    const context = useContext(TwitterContext);
+
     const handleCheckChange = () => {
-      if(theme === 'dark') {
-        setTheme('light');
+      if(context.theme === 'dark') {
+        context.setTheme('light');
+        localStorage.setItem("theme", 'light')
       } else {
-        setTheme('dark');
+        context.setTheme('dark');
+        localStorage.setItem("theme", 'dark')
       }
     }
 
     const handleButtonClick = () => {
-      console.log("CLICK!");
+      localStorage.clear()
     }
 
     return (
-        <header className={theme}>
+        <header className={context.theme}>
             <div>
                 <div className="dark-mode-container">
-                    <input id="darkMode" type="checkbox" checked={theme === 'dark'} onChange={handleCheckChange}></input>
+                    <input id="darkMode" type="checkbox" checked={context.theme === 'dark'} onChange={handleCheckChange}></input>
                     <label htmlFor="darkMode">Enable Dark Mode</label>
                 </div>
                 <div>
@@ -91,12 +99,12 @@ export default function Header({ user, theme, setTheme }) {
 
             <button className="tweet-btn">Tweet</button>
 
-            <div className={theme === 'dark' ? 'profile-card dark' : 'profile-card'}>
-                <div className="profile-icon"><img src={user.profileImage}/></div>
+            <div className={context.theme === 'dark' ? 'profile-card dark' : 'profile-card'}>
+                <div className="profile-icon"><img src={context.user.profileImage}/></div>
 
                 <div className="profile-details">
-                    <h4>{user.name}</h4>
-                    <small>{user.handle}</small>
+                    <h4>{context.user.name}</h4>
+                    <small>{context.user.handle}</small>
                 </div>
 
                 <div className="action">
