@@ -4,10 +4,22 @@ import Tweets from './components/Tweets'
 import RightSide from './components/RightSide'
 import defaultTweets from './assets/data/tweets.js'
 import user from './assets/data/user.js'
+import { createContext } from 'react'
+
+export const TweetContext = createContext();
+export const ThemeContext = createContext();
+export const UserContext = createContext();
 
 function App() {
     const [tweets, setTweets] = useState(defaultTweets)
-    const [theme, setTheme] = useState('light');
+    console.log(tweets)
+    const [theme, setTheme] = useState(() => {
+        const initialTheme = localStorage.getItem("theme");
+        console.log("first set");
+        return initialTheme ? initialTheme : "light";
+      });
+
+      
 
     useEffect(() => {
         theme === 'light'
@@ -16,11 +28,33 @@ function App() {
     }, [theme])
 
     return (
-        <div className="container">
-            <Header user={user} theme={theme} setTheme={setTheme} />
-            <Tweets tweets={tweets} setTweets={setTweets} user={user} theme={theme}  />
-            <RightSide theme={theme} />
-        </div>
+        <>
+
+        <UserContext.Provider value={{user: user}}>
+        <ThemeContext.Provider value={{ theme: theme, setTheme: setTheme}}>
+        <TweetContext.Provider value={{ tweets: tweets, setTweets: setTweets }}>
+
+            <div className='container'>
+                <Header />
+                <Tweets />
+                <RightSide />
+            </div>
+
+
+        </TweetContext.Provider>
+
+
+
+        </ThemeContext.Provider>
+
+
+        </UserContext.Provider>
+    
+            
+        
+        
+        </>
+        
     )
 }
 
