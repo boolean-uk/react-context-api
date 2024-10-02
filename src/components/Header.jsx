@@ -1,21 +1,19 @@
-export default function Header({ user, theme, setTheme }) {
-    const handleCheckChange = () => {
-      if(theme === 'dark') {
-        setTheme('light');
-      } else {
-        setTheme('dark');
-      }
-    }
+import { useContext } from 'react';
+import { GlobalContext } from '../App';
 
-    const handleButtonClick = () => {
-      console.log("CLICK!");
+export default function Header() {
+    const { user, theme, toggleTheme, setTheme} = useContext(GlobalContext);
+
+    const handleButtonClick = () => { 
+      setTheme('light')
+      localStorage.removeItem("theme");
     }
 
     return (
         <header className={theme}>
             <div>
                 <div className="dark-mode-container">
-                    <input id="darkMode" type="checkbox" checked={theme === 'dark'} onChange={handleCheckChange}></input>
+                    <input id="darkMode" type="checkbox" checked={theme === 'dark'} onChange={toggleTheme}></input>
                     <label htmlFor="darkMode">Enable Dark Mode</label>
                 </div>
                 <div>
