@@ -1,7 +1,11 @@
-import imgElon from '../assets/images/elon.jpg'
-import imgZuck from '../assets/images/zuck.jpg'
+import { useContext } from 'react';
+import { ThemeContext } from './context'; 
+import imgElon from '../assets/images/elon.jpg';
+import imgZuck from '../assets/images/zuck.jpg';
 
-export default function RightSide({ theme }) {
+export default function RightSide() {
+    const { theme } = useContext(ThemeContext);
+
     return (
         <aside>
             <div className={theme === 'dark' ? 'search-section dark' : 'search-section'}>
@@ -45,11 +49,14 @@ export default function RightSide({ theme }) {
                     </div>
                 </div>
             </div>
+
             <div className={theme === 'dark' ? 'widget dark' : 'widget'}>
                 <h1>Who to follow</h1>
 
                 <div className="follow-block">
-                    <div className="icon"><img src={imgElon}/></div>
+                    <div className="icon">
+                        <img src={imgElon} alt="Elon Musk" />
+                    </div>
 
                     <div className="content">
                         <h4>Elon Musk</h4>
@@ -62,7 +69,9 @@ export default function RightSide({ theme }) {
                 </div>
 
                 <div className="follow-block">
-                    <div className="icon"><img src={imgZuck}/></div>
+                    <div className="icon">
+                        <img src={imgZuck} alt="Mark Zuckerberg" />
+                    </div>
 
                     <div className="content">
                         <h4>Mark Zuckerberg</h4>
@@ -75,5 +84,5 @@ export default function RightSide({ theme }) {
                 </div>
             </div>
         </aside>
-    )
+    );
 }
