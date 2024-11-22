@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import imgDoge from '../assets/images/doge.jpg'
+import imgDoge from '../assets/images/src.jpg'
 
 export default function CreateTweet({ tweets, setTweets, user, theme }) {
     const [content, setContent] = useState('')

@@ -1,7 +1,7 @@
-import imgDoge from '../images/doge.jpg'
+import imgsrc from '../images/src.jpg'
 
 export default {
-    profileImage: imgDoge,
-    name: 'Doge',
-    handle: '@doge'
+    profileImage: imgsrc,
+    name: 'Flier',
+    handle: '@asap_stunnaboy'
 }
