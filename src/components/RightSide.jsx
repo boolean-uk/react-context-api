@@ -1,7 +1,14 @@
+import { TweetContext, ThemeContext } from '../App'
+import { useContext } from 'react'
 import imgElon from '../assets/images/elon.jpg'
 import imgZuck from '../assets/images/zuck.jpg'
 
-export default function RightSide({ theme }) {
+export default function RightSide() {
+
+    const {tweets, setTweets, user} = useContext(TweetContext);
+
+    const {theme, setTheme} = useContext(ThemeContext)
+
     return (
         <aside>
             <div className={theme === 'dark' ? 'search-section dark' : 'search-section'}>
@@ -14,7 +21,7 @@ export default function RightSide({ theme }) {
                     <h1>Get Verified</h1>
                     <h3>Subscribe to unlock nothing.</h3>
 
-                    <button className="verify-btn">Get Verified</button>
+                    <button className="verify-btn"> Get Verified</button>
                 </div>
             </div>
 
