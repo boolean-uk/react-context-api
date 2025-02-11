@@ -1,15 +1,32 @@
-export default function Header({ user, theme, setTheme }) {
-    const handleCheckChange = () => {
-      if(theme === 'dark') {
-        setTheme('light');
-      } else {
-        setTheme('dark');
-      }
-    }
+import { useContext } from "react";
+import { ThemeContext } from "../Contexts";
+import { UserContext } from "../Contexts";
 
-    const handleButtonClick = () => {
-      console.log("CLICK!");
-    }
+export default function Header() {
+    const {theme ,setTheme} = useContext(ThemeContext);
+    const {CurrentUser, setUser } = useContext(UserContext);
+    console.log(CurrentUser)
+    const handleCheckChange = () => {
+
+        
+        setTheme((prevTheme) => {
+            const newTheme = prevTheme === "light" ? "dark" : "light";
+            localStorage.setItem("theme", newTheme);
+            return newTheme;
+            });
+
+
+     }
+     const handleButtonClick = () => {
+        //clear theme
+        localStorage.removeItem("theme");
+        setTheme((prevTheme) => {
+            const newTheme = prevTheme === "light" ? "dark" : "light";
+            localStorage.setItem("theme", newTheme);
+            return newTheme;
+            });//there might be a better way of doing this
+        console.log("CLICK!");
+      }
 
     return (
         <header className={theme}>
@@ -92,11 +109,11 @@ export default function Header({ user, theme, setTheme }) {
             <button className="tweet-btn">Tweet</button>
 
             <div className={theme === 'dark' ? 'profile-card dark' : 'profile-card'}>
-                <div className="profile-icon"><img src={user.profileImage}/></div>
+                <div className="profile-icon"><img src={CurrentUser.profileImage}/></div>
 
                 <div className="profile-details">
-                    <h4>{user.name}</h4>
-                    <small>{user.handle}</small>
+                    <h4>{CurrentUser.name}</h4>
+                    <small>{CurrentUser.handle}</small>
                 </div>
 
                 <div className="action">
