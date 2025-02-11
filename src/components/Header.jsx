@@ -1,21 +1,33 @@
-export default function Header({ user, theme, setTheme }) {
+import { ThemeContext } from "../App";
+import { TweetsContext } from "../App";
+import { useContext } from "react";
+
+export default function Header() {
+    const themeContext = useContext(ThemeContext)
+    const tweetsContext = useContext(TweetsContext)
+
+    
+
     const handleCheckChange = () => {
-      if(theme === 'dark') {
-        setTheme('light');
+      if(themeContext.theme === 'dark') {
+        localStorage.setItem("theme", "light")
+        themeContext.setTheme('light');
       } else {
-        setTheme('dark');
+        localStorage.setItem("theme", "dark")
+        themeContext.setTheme('dark');
       }
     }
 
     const handleButtonClick = () => {
-      console.log("CLICK!");
+      localStorage.removeItem("theme")
+      themeContext.setTheme('light');
     }
 
     return (
-        <header className={theme}>
+        <header className={themeContext.theme}>
             <div>
                 <div className="dark-mode-container">
-                    <input id="darkMode" type="checkbox" checked={theme === 'dark'} onChange={handleCheckChange}></input>
+                    <input id="darkMode" type="checkbox" checked={themeContext.theme === 'dark'} onChange={handleCheckChange}></input>
                     <label htmlFor="darkMode">Enable Dark Mode</label>
                 </div>
                 <div>
@@ -91,12 +103,12 @@ export default function Header({ user, theme, setTheme }) {
 
             <button className="tweet-btn">Tweet</button>
 
-            <div className={theme === 'dark' ? 'profile-card dark' : 'profile-card'}>
-                <div className="profile-icon"><img src={user.profileImage}/></div>
+            <div className={themeContext.theme === 'dark' ? 'profile-card dark' : 'profile-card'}>
+                <div className="profile-icon"><img src={tweetsContext.user.profileImage}/></div>
 
                 <div className="profile-details">
-                    <h4>{user.name}</h4>
-                    <small>{user.handle}</small>
+                    <h4>{tweetsContext.user.name}</h4>
+                    <small>{tweetsContext.user.handle}</small>
                 </div>
 
                 <div className="action">
