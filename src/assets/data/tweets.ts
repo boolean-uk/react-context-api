@@ -2,6 +2,24 @@ import imgElon from '../images/elon.jpg'
 import imgZuck from '../images/zuck.jpg'
 import imgTom from '../images/tom.jpg'
 
+export interface Tweet {
+    profileImage: any,
+    name: string,
+    handle: string,
+    date: string,
+    content: string,
+    commentCount: number,
+    retweetCount: number,
+    heartCount: string,
+    analyticsCount: string,
+    article?: {
+        image: any,
+        site: string,
+        title: string,
+        content: string
+    }
+}
+
 export default [
     {
         profileImage: imgElon,
@@ -42,4 +60,4 @@ export default [
         heartCount: '45.7k',
         analyticsCount: '210k'
     },
-]
+] as Tweet[]
