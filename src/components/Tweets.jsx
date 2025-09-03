@@ -1,20 +1,35 @@
-import CreateTweet from './CreateTweet'
-import Tweet from './Tweet'
+import CreateTweet from './CreateTweet';
+import {createContext, useContext} from "react";
 
-export default function Tweets({ tweets, setTweets, user, theme }) {
+import Tweet from './Tweet';
+import {MyContext} from "../App.jsx"
+
+const MyContext2 = createContext()
+const MyContext3 = createContext()
+
+
+function Tweets() {
+  const context = useContext(MyContext);
+  
   return (
-        <main>
-            <div className={theme === 'dark' ? 'top-bar dark' : 'top-bar'}>
-                <h2 className="title">Home</h2>
-            </div>
+    <main>
+      <div className={context.theme === 'dark' ? 'top-bar dark' : 'top-bar'}>
+        <h2 className="title">Home</h2>
+      </div>
+     <MyContext2.Provider value={ { theme: context.theme, tweets: context.tweets, setTweets: context.setTweets, user: context.user} }>
 
-            <CreateTweet tweets={tweets} setTweets={setTweets} user={user} theme={theme} />
+      <CreateTweet  />
+      </MyContext2.Provider>
+      <div className="show-more-tweets">
+        <p>Show 35 Tweets</p>
+      </div>
 
-            <div className="show-more-tweets">
-                <p>Show 35 Tweets</p>
-            </div>
+      {context.tweets.map((tweet, index) => (
+        <Tweet key={index} tweet={tweet} index={index}/>
+      ))}
+    
 
-            {tweets.map((tweet, index) => <Tweet tweet={tweet} theme={theme} key={index} />)}
-        </main>
-    )
+    </main>
+  );
 }
+export  {Tweets, MyContext2, MyContext3};
