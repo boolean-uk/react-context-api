@@ -17,7 +17,9 @@ export default [
     {
         profileImage: imgZuck,
         name: 'Mark Zuckerberg',
-        handle: '@markzuckerberg',
+        // Zuckerberg's twitter handle is zuck
+        // He got suspended in 2011 or so, but still :P
+        handle: '@zuck',
         date: '9h',
         content: 'lol',
         commentCount: '1.5k',
