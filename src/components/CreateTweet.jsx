@@ -6,7 +6,7 @@ export default function CreateTweet({ tweets, setTweets, user, theme }) {
 
     const addTweet = (e) => {
         e.preventDefault()
-        setTweets([
+        setTweets([ 
             {
                 ...user,
                 date: '1m',
