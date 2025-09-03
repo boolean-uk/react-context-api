@@ -1,9 +1,12 @@
-import { useEffect, useState } from 'react'
+import { createContext, useEffect, useState } from 'react'
 import Header from './components/Header'
 import Tweets from './components/Tweets'
 import RightSide from './components/RightSide'
 import defaultTweets from './assets/data/tweets.js'
 import user from './assets/data/user.js'
+
+const TweetContext = createContext(1);
+const ThemeContext = createContext();
 
 function App() {
     const [tweets, setTweets] = useState(defaultTweets)
@@ -16,12 +19,16 @@ function App() {
     }, [theme])
 
     return (
-        <div className="container">
-            <Header user={user} theme={theme} setTheme={setTheme} />
-            <Tweets tweets={tweets} setTweets={setTweets} user={user} theme={theme}  />
-            <RightSide theme={theme} />
-        </div>
+        <TweetContext.Provider value={{tweets, setTweets, user}}>
+            <ThemeContext.Provider value={{theme, setTheme}}>
+                <div className="container">
+                    <Header/>
+                    <Tweets />
+                    <RightSide/>
+                </div>
+            </ThemeContext.Provider>
+        </TweetContext.Provider>
     )
 }
 
-export { App };
+export { App, TweetContext, ThemeContext };
