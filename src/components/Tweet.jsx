@@ -1,4 +1,5 @@
 export default function Tweet({ tweet, theme }) {
+    
     return (
         <article className={theme === 'dark' ? 'tweet dark' : 'tweet'}>
             <div className="profile-icon"><img src={tweet.profileImage}/></div>
