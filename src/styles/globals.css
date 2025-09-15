@@ -1,0 +1,728 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --font-size: 16px;
+  --background: #0F172A;
+  --foreground: #F8FAFC;
+  --card: #1E293B;
+  --card-foreground: #F8FAFC;
+  --popover: #1E293B;
+  --popover-foreground: #F8FAFC;
+  --primary: #6366F1;
+  --primary-foreground: #ffffff;
+  --secondary: #334155;
+  --secondary-foreground: #F8FAFC;
+  --muted: #334155;
+  --muted-foreground: #94A3B8;
+  --accent: #8B5CF6;
+  --accent-foreground: #ffffff;
+  --destructive: #EF4444;
+  --destructive-foreground: #ffffff;
+  --success: #10B981;
+  --success-foreground: #ffffff;
+  --warning: #F59E0B;
+  --warning-foreground: #ffffff;
+  --neutral-900: #0F172A;
+  --neutral-700: #334155;
+  --neutral-500: #64748B;
+  --neutral-200: #475569;
+  --neutral-50: #1E293B;
+  --border: #334155;
+  --input: transparent;
+  --input-background: #334155;
+  --switch-background: #E2E8F0;
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --font-weight-semibold: 600;
+  --ring: #3B82F6;
+  --chart-1: #6366F1;
+  --chart-2: #8B5CF6;
+  --chart-3: #06B6D4;
+  --chart-4: #10B981;
+  --chart-5: #F97316;
+  --radius: 1rem;
+  --radius-lg: 1.5rem;
+  --sidebar: #F8FAFC;
+  --sidebar-foreground: #0F172A;
+  --sidebar-primary: #3B82F6;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #E2E8F0;
+  --sidebar-accent-foreground: #0F172A;
+  --sidebar-border: #E2E8F0;
+  --sidebar-ring: #3B82F6;
+}
+
+.dark {
+  --background: #0F172A;
+  --foreground: #F8FAFC;
+  --card: #334155;
+  --card-foreground: #F8FAFC;
+  --popover: #334155;
+  --popover-foreground: #F8FAFC;
+  --primary: #3B82F6;
+  --primary-foreground: #ffffff;
+  --secondary: #334155;
+  --secondary-foreground: #F8FAFC;
+  --muted: #334155;
+  --muted-foreground: #64748B;
+  --accent: #0EA5E9;
+  --accent-foreground: #ffffff;
+  --destructive: #EF4444;
+  --destructive-foreground: #ffffff;
+  --success: #10B981;
+  --success-foreground: #ffffff;
+  --warning: #F59E0B;
+  --warning-foreground: #ffffff;
+  --neutral-900: #F8FAFC;
+  --neutral-700: #E2E8F0;
+  --neutral-500: #64748B;
+  --neutral-200: #334155;
+  --neutral-50: #0F172A;
+  --border: #334155;
+  --input: #334155;
+  --input-background: #334155;
+  --switch-background: #334155;
+  --ring: #3B82F6;
+  --chart-1: #6366F1;
+  --chart-2: #8B5CF6;
+  --chart-3: #06B6D4;
+  --chart-4: #10B981;
+  --chart-5: #F97316;
+  --sidebar: #0F172A;
+  --sidebar-foreground: #F8FAFC;
+  --sidebar-primary: #3B82F6;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #334155;
+  --sidebar-accent-foreground: #F8FAFC;
+  --sidebar-border: #334155;
+  --sidebar-ring: #3B82F6;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-neutral-900: var(--neutral-900);
+  --color-neutral-700: var(--neutral-700);
+  --color-neutral-500: var(--neutral-500);
+  --color-neutral-200: var(--neutral-200);
+  --color-neutral-50: var(--neutral-50);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-input-background: var(--input-background);
+  --color-switch-background: var(--switch-background);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: var(--radius-lg);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/**
+ * Base typography. This is not applied to elements which have an ancestor with a Tailwind text class.
+ */
+@layer base {
+  :where(:not(:has([class*=" text-"]), :not(:has([class^="text-"])))) {
+    h1 {
+      font-size: 2rem;
+      font-weight: var(--font-weight-semibold);
+      line-height: 1.6;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      font-weight: var(--font-weight-semibold);
+      line-height: 1.6;
+    }
+
+    h3 {
+      font-size: 1.25rem;
+      font-weight: var(--font-weight-semibold);
+      line-height: 1.6;
+    }
+
+    h4 {
+      font-size: 1rem;
+      font-weight: var(--font-weight-medium);
+      line-height: 1.6;
+    }
+
+    p {
+      font-size: 1rem;
+      font-weight: var(--font-weight-normal);
+      line-height: 1.6;
+    }
+
+    .caption {
+      font-size: 0.8125rem;
+      font-weight: var(--font-weight-normal);
+      line-height: 1.6;
+    }
+
+    label {
+      font-size: 1rem;
+      font-weight: var(--font-weight-medium);
+      line-height: 1.6;
+    }
+
+    button {
+      font-size: 1rem;
+      font-weight: var(--font-weight-medium);
+      line-height: 1.6;
+    }
+
+    input {
+      font-size: 1rem;
+      font-weight: var(--font-weight-normal);
+      line-height: 1.6;
+    }
+  }
+}
+
+html {
+  font-size: var(--font-size);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+}
+
+/* 8-point grid spacing utilities */
+.safe-area-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* Lumo-specific utility classes */
+.lumo-shadow-card {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.lumo-shadow-lg {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Steam-inspired marketplace styles */
+.steam-gradient {
+  background: linear-gradient(135deg, #1a2332 0%, #0f1419 25%, #1a2332 50%, #0f1419 75%, #1a2332 100%);
+}
+
+.steam-card {
+  background: linear-gradient(135deg, #2a3441 0%, #1e2631 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.steam-card:hover {
+  background: linear-gradient(135deg, #324055 0%, #253140 100%);
+  border-color: rgba(99, 102, 241, 0.5);
+  box-shadow: 0 8px 32px rgba(99, 102, 241, 0.2);
+  transform: translateY(-2px);
+}
+
+.steam-featured {
+  background: linear-gradient(135deg, #4c1d95 0%, #6366f1 50%, #8b5cf6 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.steam-featured::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.1) 50%, transparent 100%);
+  animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+.steam-category-tab {
+  background: linear-gradient(135deg, #374151 0%, #1f2937 100%);
+  border-bottom: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.steam-category-tab.active {
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  border-bottom-color: #ffffff;
+}
+
+.steam-price {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-weight: 600;
+  color: white;
+  box-shadow: 0 2px 4px rgba(16, 185, 129, 0.3);
+}
+
+.steam-discount {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: white;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.steam-rating {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  color: white;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.steam-hero {
+  background: linear-gradient(135deg, 
+    rgba(99, 102, 241, 0.2) 0%, 
+    rgba(139, 92, 246, 0.2) 25%,
+    rgba(16, 185, 129, 0.2) 50%,
+    rgba(139, 92, 246, 0.2) 75%,
+    rgba(99, 102, 241, 0.2) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.steam-library-header {
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  border-bottom: 2px solid #6366f1;
+  backdrop-filter: blur(10px);
+}
+
+/* Enhanced marketplace styles */
+.marketplace-hero {
+  background: linear-gradient(135deg, 
+    rgba(99, 102, 241, 0.3) 0%, 
+    rgba(139, 92, 246, 0.3) 25%,
+    rgba(16, 185, 129, 0.3) 50%,
+    rgba(239, 68, 68, 0.3) 75%,
+    rgba(99, 102, 241, 0.3) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.marketplace-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.1) 50%, transparent 100%);
+  animation: shine 4s infinite;
+}
+
+@keyframes shine {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+.category-grid-item {
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.category-grid-item::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent 0%, rgba(255, 255, 255, 0.05) 50%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.category-grid-item:hover::before {
+  opacity: 1;
+}
+
+.service-card-enhanced {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.service-card-enhanced:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(99, 102, 241, 0.3);
+}
+
+.price-highlight {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+}
+
+/* Modern chart and analytics styles */
+.analytics-card {
+  background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.analytics-card:hover {
+  background: linear-gradient(135deg, #334155 0%, #475569 100%);
+  border-color: rgba(99, 102, 241, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(99, 102, 241, 0.15);
+}
+
+.modern-gradient-bg {
+  background: linear-gradient(135deg, 
+    rgba(99, 102, 241, 0.1) 0%, 
+    rgba(139, 92, 246, 0.1) 25%,
+    rgba(6, 182, 212, 0.1) 50%,
+    rgba(16, 185, 129, 0.1) 75%,
+    rgba(99, 102, 241, 0.1) 100%);
+}
+
+.hover-lift {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Refined button hover states */
+.btn-modern {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-modern:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.25);
+}
+
+/* Fix bar chart hover effects */
+.recharts-bar-rectangle {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.recharts-bar-rectangle:hover {
+  filter: brightness(1.1) !important;
+}
+
+/* Ensure tooltip backgrounds are consistent */
+.recharts-tooltip-wrapper {
+  filter: none !important;
+}
+
+/* Fix accordion content opacity issues */
+[data-slot="accordion-content"] {
+  opacity: 1 !important;
+}
+
+[data-slot="accordion-content"] > div {
+  opacity: 1 !important;
+}
+
+/* Override any fade animations on accordion items */
+.data-\[state\=closed\]\:animate-accordion-up,
+.data-\[state\=open\]\:animate-accordion-down {
+  opacity: 1 !important;
+}
+
+/* Integrated sidebar styling */
+.integrated-sidebar {
+  background: linear-gradient(180deg, #1e293b 0%, #334155 100%);
+  border-right: 1px solid rgba(99, 102, 241, 0.2);
+}
+
+/* Smooth navbar integration */
+.navbar-integrated {
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(99, 102, 241, 0.2);
+}
+
+/* Category background effects - smooth atmospheric integration */
+
+/* Main content area effects - gentle and smooth */
+.category-bg-all {
+  background: 
+    radial-gradient(1200px circle at 30% 20%, rgba(99, 102, 241, 0.12) 0%, transparent 60%),
+    radial-gradient(900px circle at 70% 80%, rgba(139, 92, 246, 0.08) 0%, transparent 60%),
+    linear-gradient(135deg, 
+      rgba(22, 30, 42, 0.6) 0%, 
+      rgba(15, 20, 25, 0.7) 25%, 
+      rgba(22, 30, 42, 0.6) 50%, 
+      rgba(15, 20, 25, 0.7) 75%, 
+      rgba(22, 30, 42, 0.6) 100%);
+  transition: background 0.6s ease-in-out;
+}
+
+.category-bg-insurance {
+  background: 
+    radial-gradient(1000px circle at 30% 20%, rgba(249, 115, 22, 0.15) 0%, transparent 60%),
+    radial-gradient(700px circle at 70% 80%, rgba(245, 158, 11, 0.12) 0%, transparent 60%),
+    linear-gradient(135deg, 
+      rgba(30, 23, 18, 0.7) 0%, 
+      rgba(18, 13, 10, 0.8) 25%, 
+      rgba(30, 23, 18, 0.7) 50%, 
+      rgba(18, 13, 10, 0.8) 75%, 
+      rgba(30, 23, 18, 0.7) 100%);
+  transition: background 0.6s ease-in-out;
+}
+
+.category-bg-trending {
+  background: 
+    radial-gradient(1200px circle at 30% 20%, rgba(16, 185, 129, 0.12) 0%, transparent 60%),
+    radial-gradient(900px circle at 70% 80%, rgba(5, 150, 105, 0.08) 0%, transparent 60%),
+    linear-gradient(135deg, 
+      rgba(18, 30, 26, 0.6) 0%, 
+      rgba(12, 20, 18, 0.7) 25%, 
+      rgba(18, 30, 26, 0.6) 50%, 
+      rgba(12, 20, 18, 0.7) 75%, 
+      rgba(18, 30, 26, 0.6) 100%);
+  transition: background 0.6s ease-in-out;
+}
+
+.category-bg-utilities {
+  background: 
+    radial-gradient(1200px circle at 30% 20%, rgba(6, 182, 212, 0.12) 0%, transparent 60%),
+    radial-gradient(900px circle at 70% 80%, rgba(14, 165, 233, 0.08) 0%, transparent 60%),
+    linear-gradient(135deg, 
+      rgba(18, 26, 30, 0.6) 0%, 
+      rgba(12, 18, 22, 0.7) 25%, 
+      rgba(18, 26, 30, 0.6) 50%, 
+      rgba(12, 18, 22, 0.7) 75%, 
+      rgba(18, 26, 30, 0.6) 100%);
+  transition: background 0.6s ease-in-out;
+}
+
+.category-bg-entertainment {
+  background: 
+    radial-gradient(1200px circle at 30% 20%, rgba(139, 92, 246, 0.12) 0%, transparent 60%),
+    radial-gradient(900px circle at 70% 80%, rgba(168, 85, 247, 0.08) 0%, transparent 60%),
+    linear-gradient(135deg, 
+      rgba(26, 20, 32, 0.6) 0%, 
+      rgba(18, 12, 25, 0.7) 25%, 
+      rgba(26, 20, 32, 0.6) 50%, 
+      rgba(18, 12, 25, 0.7) 75%, 
+      rgba(26, 20, 32, 0.6) 100%);
+  transition: background 0.6s ease-in-out;
+}
+
+.category-bg-mobile {
+  background: 
+    radial-gradient(1200px circle at 30% 20%, rgba(59, 130, 246, 0.12) 0%, transparent 60%),
+    radial-gradient(900px circle at 70% 80%, rgba(37, 99, 235, 0.08) 0%, transparent 60%),
+    linear-gradient(135deg, 
+      rgba(20, 22, 32, 0.6) 0%, 
+      rgba(12, 15, 25, 0.7) 25%, 
+      rgba(20, 22, 32, 0.6) 50%, 
+      rgba(12, 15, 25, 0.7) 75%, 
+      rgba(20, 22, 32, 0.6) 100%);
+  transition: background 0.6s ease-in-out;
+}
+
+.category-bg-lifestyle {
+  background: 
+    radial-gradient(1200px circle at 30% 20%, rgba(236, 72, 153, 0.12) 0%, transparent 60%),
+    radial-gradient(900px circle at 70% 80%, rgba(219, 39, 119, 0.08) 0%, transparent 60%),
+    linear-gradient(135deg, 
+      rgba(32, 20, 26, 0.6) 0%, 
+      rgba(25, 12, 18, 0.7) 25%, 
+      rgba(32, 20, 26, 0.6) 50%, 
+      rgba(25, 12, 18, 0.7) 75%, 
+      rgba(32, 20, 26, 0.6) 100%);
+  transition: background 0.6s ease-in-out;
+}
+
+/* Sidebar category effects - gentle integration */
+.sidebar-category-all {
+  background: 
+    linear-gradient(180deg, #1e293b 0%, #334155 100%),
+    radial-gradient(500px circle at 50% 50%, rgba(99, 102, 241, 0.06) 0%, transparent 70%);
+  border-right: 1px solid rgba(99, 102, 241, 0.25);
+  transition: all 0.6s ease-in-out;
+}
+
+.sidebar-category-insurance {
+  background: 
+    linear-gradient(180deg, #1e293b 0%, #334155 100%),
+    radial-gradient(500px circle at 50% 50%, rgba(249, 115, 22, 0.06) 0%, transparent 70%);
+  border-right: 1px solid rgba(249, 115, 22, 0.25);
+  transition: all 0.6s ease-in-out;
+}
+
+.sidebar-category-trending {
+  background: 
+    linear-gradient(180deg, #1e293b 0%, #334155 100%),
+    radial-gradient(500px circle at 50% 50%, rgba(16, 185, 129, 0.06) 0%, transparent 70%);
+  border-right: 1px solid rgba(16, 185, 129, 0.25);
+  transition: all 0.6s ease-in-out;
+}
+
+.sidebar-category-utilities {
+  background: 
+    linear-gradient(180deg, #1e293b 0%, #334155 100%),
+    radial-gradient(500px circle at 50% 50%, rgba(6, 182, 212, 0.06) 0%, transparent 70%);
+  border-right: 1px solid rgba(6, 182, 212, 0.25);
+  transition: all 0.6s ease-in-out;
+}
+
+.sidebar-category-entertainment {
+  background: 
+    linear-gradient(180deg, #1e293b 0%, #334155 100%),
+    radial-gradient(500px circle at 50% 50%, rgba(139, 92, 246, 0.06) 0%, transparent 70%);
+  border-right: 1px solid rgba(139, 92, 246, 0.25);
+  transition: all 0.6s ease-in-out;
+}
+
+.sidebar-category-mobile {
+  background: 
+    linear-gradient(180deg, #1e293b 0%, #334155 100%),
+    radial-gradient(500px circle at 50% 50%, rgba(59, 130, 246, 0.06) 0%, transparent 70%);
+  border-right: 1px solid rgba(59, 130, 246, 0.25);
+  transition: all 0.6s ease-in-out;
+}
+
+.sidebar-category-lifestyle {
+  background: 
+    linear-gradient(180deg, #1e293b 0%, #334155 100%),
+    radial-gradient(500px circle at 50% 50%, rgba(236, 72, 153, 0.06) 0%, transparent 70%);
+  border-right: 1px solid rgba(236, 72, 153, 0.25);
+  transition: all 0.6s ease-in-out;
+}
+
+/* Navbar category effects - gentle integration */
+.navbar-category-all {
+  background: 
+    linear-gradient(135deg, #1e293b 0%, #0f172a 100%),
+    radial-gradient(800px circle at 50% 50%, rgba(99, 102, 241, 0.04) 0%, transparent 70%);
+  border-bottom: 1px solid rgba(99, 102, 241, 0.2);
+  transition: all 0.6s ease-in-out;
+}
+
+.navbar-category-insurance {
+  background: 
+    linear-gradient(135deg, #1e293b 0%, #0f172a 100%),
+    radial-gradient(800px circle at 50% 50%, rgba(249, 115, 22, 0.04) 0%, transparent 70%);
+  border-bottom: 1px solid rgba(249, 115, 22, 0.2);
+  transition: all 0.6s ease-in-out;
+}
+
+.navbar-category-trending {
+  background: 
+    linear-gradient(135deg, #1e293b 0%, #0f172a 100%),
+    radial-gradient(800px circle at 50% 50%, rgba(16, 185, 129, 0.04) 0%, transparent 70%);
+  border-bottom: 1px solid rgba(16, 185, 129, 0.2);
+  transition: all 0.6s ease-in-out;
+}
+
+.navbar-category-utilities {
+  background: 
+    linear-gradient(135deg, #1e293b 0%, #0f172a 100%),
+    radial-gradient(800px circle at 50% 50%, rgba(6, 182, 212, 0.04) 0%, transparent 70%);
+  border-bottom: 1px solid rgba(6, 182, 212, 0.2);
+  transition: all 0.6s ease-in-out;
+}
+
+.navbar-category-entertainment {
+  background: 
+    linear-gradient(135deg, #1e293b 0%, #0f172a 100%),
+    radial-gradient(800px circle at 50% 50%, rgba(139, 92, 246, 0.04) 0%, transparent 70%);
+  border-bottom: 1px solid rgba(139, 92, 246, 0.2);
+  transition: all 0.6s ease-in-out;
+}
+
+.navbar-category-mobile {
+  background: 
+    linear-gradient(135deg, #1e293b 0%, #0f172a 100%),
+    radial-gradient(800px circle at 50% 50%, rgba(59, 130, 246, 0.04) 0%, transparent 70%);
+  border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+  transition: all 0.6s ease-in-out;
+}
+
+.navbar-category-lifestyle {
+  background: 
+    linear-gradient(135deg, #1e293b 0%, #0f172a 100%),
+    radial-gradient(800px circle at 50% 50%, rgba(236, 72, 153, 0.04) 0%, transparent 70%);
+  border-bottom: 1px solid rgba(236, 72, 153, 0.2);
+  transition: all 0.6s ease-in-out;
+}
+
+/* Modern custom scrollbar styling for dark theme */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(99, 102, 241, 0.6) transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(99, 102, 241, 0.6) 0%, rgba(139, 92, 246, 0.6) 100%);
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, rgba(99, 102, 241, 0.8) 0%, rgba(139, 92, 246, 0.8) 100%);
+  box-shadow: 0 0 6px rgba(99, 102, 241, 0.4);
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:active {
+  background: linear-gradient(180deg, rgba(99, 102, 241, 1) 0%, rgba(139, 92, 246, 1) 100%);
+}
