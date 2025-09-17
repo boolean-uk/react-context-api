@@ -1,25 +1,34 @@
-export default function Header({ user, theme, setTheme }) {
+import {useContext} from "react";
+import {ThemeContext, UserContext} from "../App.jsx";
+
+export default function Header() {
+    const {user} = useContext(UserContext);
+    const {theme, setTheme} = useContext(ThemeContext);
     const handleCheckChange = () => {
-      if(theme === 'dark') {
-        setTheme('light');
-      } else {
-        setTheme('dark');
-      }
+        if (theme === 'dark') {
+            setTheme('light');
+            localStorage.setItem("theme", "light");
+        } else {
+            setTheme('dark');
+            localStorage.setItem("theme", "dark");
+        }
     }
 
     const handleButtonClick = () => {
-      console.log("CLICK!");
+        localStorage.removeItem("theme");
     }
 
     return (
         <header className={theme}>
             <div>
                 <div className="dark-mode-container">
-                    <input id="darkMode" type="checkbox" checked={theme === 'dark'} onChange={handleCheckChange}></input>
+                    <input id="darkMode" type="checkbox" checked={theme === 'dark'}
+                           onChange={handleCheckChange}></input>
                     <label htmlFor="darkMode">Enable Dark Mode</label>
                 </div>
                 <div>
-                    <button className="clear-settings-btn" onClick={handleButtonClick}>Clear Locally Saved Settings</button>
+                    <button className="clear-settings-btn" onClick={handleButtonClick}>Clear Locally Saved Settings
+                    </button>
                 </div>
             </div>
             <div className="logo">
