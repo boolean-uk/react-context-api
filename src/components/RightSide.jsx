@@ -1,7 +1,12 @@
+import { useContext } from 'react'
+import { ThemeContext } from '../App'
+
 import imgElon from '../assets/images/elon.jpg'
 import imgZuck from '../assets/images/zuck.jpg'
 
-export default function RightSide({ theme }) {
+export default function RightSide() {
+    const { theme } = useContext(ThemeContext)
+
     return (
         <aside>
             <div className={theme === 'dark' ? 'search-section dark' : 'search-section'}>
@@ -23,7 +28,7 @@ export default function RightSide({ theme }) {
 
                 <div className="news-block">
                     <div className="content">
-                        <small>Entertainment · Trending</small>
+                        <small>Entertainment - Trending</small>
                         <h4>Elon Musk</h4>
                         <small>14.5k Tweets</small>
                     </div>
@@ -35,7 +40,7 @@ export default function RightSide({ theme }) {
 
                 <div className="news-block">
                     <div className="content">
-                        <small>Cage Fights · Trending</small>
+                        <small>Cage Fights - Trending</small>
                         <h4>Mark Zuckerberg</h4>
                         <small>59.1k Tweets</small>
                     </div>
